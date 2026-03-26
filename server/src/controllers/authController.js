@@ -4,10 +4,10 @@ const passport = require("passport");
 
 async function register(req, res) {
   try {
-    const { username, password } = req.body;
+    const { username, email, password } = req.body;
     const hash = await bcrypt.hash(password, 10);
     const user = await prisma.user.create({
-      data: { username, password: hash },
+      data: { username, email, password: hash },
     });
     res.json({ message: "Registered", userId: user.id });
   } catch (error) {
