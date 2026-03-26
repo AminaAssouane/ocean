@@ -16,12 +16,16 @@ async function register(req, res) {
   }
 }
 
-async function login(req, res) {
+async function login(req, res, next) {
   try {
-    passport.authenticate("local", {
-      successRedirect: "/",
-      failureRedirect: "/login",
-    });
+    passport.authenticate("local", (err, user, info) => {
+      if (err) return next(err);
+      if (!user) return res.status(401).json({ message: info?.message });
+      req.logIn(user, (err) => {
+        if (err) return next(err);
+        res.json({ message: "Logged in", user: { id: user.id } });
+      });
+    })(req, res, next);
   } catch (error) {
     console.error("Failed to login ", error);
     res.status(500).json({ message: "Login failed" });
