@@ -3,17 +3,29 @@ const bcrypt = require("bcrypt");
 const passport = require("passport");
 
 async function register(req, res) {
-  const { username, password } = req.body;
-  const hash = await bcrypt.hash(password, 10);
-  const user = await prisma.user.create({ data: { username, password: hash } });
-  res.json({ message: "Registered", userId: user.id });
+  try {
+    const { username, password } = req.body;
+    const hash = await bcrypt.hash(password, 10);
+    const user = await prisma.user.create({
+      data: { username, password: hash },
+    });
+    res.json({ message: "Registered", userId: user.id });
+  } catch (error) {
+    console.error("Failed to register ", error);
+    res.status(500).json({ message: "Registration failed" });
+  }
 }
 
 async function login(req, res) {
-  passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/login",
-  });
+  try {
+    passport.authenticate("local", {
+      successRedirect: "/",
+      failureRedirect: "/login",
+    });
+  } catch (error) {
+    console.error("Failed to login ", error);
+    res.status(500).json({ message: "Login failed" });
+  }
 }
 
 module.exports = { register, login };
