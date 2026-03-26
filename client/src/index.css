@@ -16,3 +16,8 @@
   --color: white;
   --primary: #3995d6;
 }
+
+a {
+  text-decoration: none;
+  color: unset;
+}
