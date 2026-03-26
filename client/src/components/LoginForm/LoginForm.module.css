@@ -1,0 +1,50 @@
+.loginContainer {
+  text-align: center;
+}
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  width: 200px;
+  margin-bottom: 12px;
+}
+
+input {
+  border: none;
+  background-color: #3b3b3b;
+  font-size: 1rem;
+  color: white;
+}
+
+.loginBtn {
+  border: none;
+  color: white;
+  background-color: black;
+}
+
+.guestBtn {
+  margin-bottom: 12px;
+  background: linear-gradient(to right, #e0724a, #c850c0, #4158d0);
+  color: white;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+p {
+  font-size: 0.9rem;
+  color: gray;
+}
+
+.signUpBtn {
+  color: black;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+button:hover {
+  border: 2px solid black;
+  color: black;
+  background: white;
+}

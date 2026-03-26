@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../services/api";
+import styles from "./LoginForm.module.css";
 
 export default function LoginForm({ onSwitch }) {
   const [username, setUsername] = useState("");
@@ -18,12 +19,13 @@ export default function LoginForm({ onSwitch }) {
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
+    <div className={styles.loginContainer}>
+      <form onSubmit={handleSubmit} className={styles.loginForm}>
         <input
           type="text"
           id="username"
           placeholder="Username"
+          required
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
@@ -31,15 +33,21 @@ export default function LoginForm({ onSwitch }) {
           type="password"
           id="password"
           placeholder="Password"
+          required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Login</button>
+        <button type="submit" className={styles.loginBtn}>
+          Login
+        </button>
       </form>
-      <button>Guest User</button>
+      <button className={styles.guestBtn}>Guest User</button>
       <p>
-        Don't have an account? <a onClick={onSwitch}>Sign up!</a>
+        Don't have an account?{" "}
+        <a onClick={onSwitch} className={styles.signUpBtn}>
+          Sign up!
+        </a>
       </p>
-    </>
+    </div>
   );
 }
