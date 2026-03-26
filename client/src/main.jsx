@@ -3,8 +3,11 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
+import Register from "./pages/Register/Register";
 
-const router = createBrowserRouter([]);
+const router = createBrowserRouter([
+  { path: "/register", element: <Register /> },
+]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
