@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../services/api";
+import styles from "./RegisterForm.module.css";
 
 export default function RegisterForm({ onSwitch }) {
   const [username, setUsername] = useState("");
@@ -22,7 +23,7 @@ export default function RegisterForm({ onSwitch }) {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.registerForm}>
         <input
           type="text"
           id="username"
@@ -55,10 +56,15 @@ export default function RegisterForm({ onSwitch }) {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
-        <button type="submit">Sign Up</button>
+        <button type="submit" className={styles.signUpBtn}>
+          Sign Up
+        </button>
       </form>
       <div>
-        Already have an account? <a onClick={onSwitch}>Login</a>
+        Already have an account?{" "}
+        <a onClick={onSwitch} className={styles.loginBtn}>
+          Login
+        </a>
       </div>
     </>
   );
