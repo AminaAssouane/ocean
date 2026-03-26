@@ -3,12 +3,18 @@ const cors = require("cors");
 const express = require("express");
 const session = require("express-session");
 const passport = require("passport");
+require("./config/passport");
 
 const authRouter = require("./routes/authRouter");
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL,
+    credentials: true, // ← must match
+  }),
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(

@@ -1,5 +1,6 @@
 const prisma = require("../lib/prisma");
 const bcrypt = require("bcrypt");
+const passport = require("passport");
 
 async function register(req, res) {
   const { username, password } = req.body;
