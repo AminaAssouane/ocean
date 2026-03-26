@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../services/api";
 
-export default function Register() {
+export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -10,8 +10,8 @@ export default function Register() {
   async function handleSubmit(e) {
     try {
       e.preventDefault();
-      await api.post("/register", { username, password });
-      navigate("/login");
+      await api.post("/login", { username, password });
+      navigate("/");
     } catch (error) {
       console.error(error);
     }
@@ -32,7 +32,7 @@ export default function Register() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Register</button>
+        <button type="submit">Login</button>
       </form>
     </>
   );
