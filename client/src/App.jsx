@@ -1,7 +1,5 @@
-export default function App() {
-  return (
-    <h1>
-      <button>Ocean ~</button>
-    </h1>
-  );
+import { RouterProvider } from "react-router-dom";
+import "./App.css";
+export default function App({ router }) {
+  return <RouterProvider router={router} />;
 }
