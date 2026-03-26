@@ -11,7 +11,7 @@ export default function Login() {
     try {
       e.preventDefault();
       await api.post("/login", { username, password });
-      navigate("/");
+      navigate("/register");
     } catch (error) {
       console.error(error);
     }
