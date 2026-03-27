@@ -5,6 +5,7 @@ import "./index.css";
 import App from "./App.jsx";
 import LandingPage from "./pages/LandingPage/LandingPage.jsx";
 import DashboardLayout from "./pages/DashboardLayout/DashboardLayout.jsx";
+import Feed from "./pages/Feed/Feed.jsx";
 import Profile from "./pages/Profile/Profile.jsx";
 
 const router = createBrowserRouter([
@@ -12,7 +13,10 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <DashboardLayout />,
-    children: [{ index: true, element: <Profile /> }],
+    children: [
+      { index: true, element: <Feed /> },
+      { path: "profile", element: <Profile /> },
+    ],
   },
 ]);
 
