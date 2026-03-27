@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import PostPreview from "../../components/PostPreview/PostPreview";
 import api from "../../services/api";
 
 export default function Feed() {
@@ -47,9 +48,7 @@ export default function Feed() {
       <section>
         <div>Posts : </div>
         {posts.map((post) => (
-          <p key={post.id}>
-            {post.author.username}: {post.content}
-          </p>
+          <PostPreview key={post.id} post={post} />
         ))}
       </section>
     </>
