@@ -1,0 +1,22 @@
+.dashboardLayout {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar main";
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: auto;
+
+  min-height: 100vh;
+}
+
+.dashboardLayout .header {
+  grid-area: header;
+}
+
+.dashboardLayout .sidebar {
+  grid-area: sidebar;
+}
+
+.dashboardLayout .main {
+  grid-area: main;
+}
