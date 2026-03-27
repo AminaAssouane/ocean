@@ -15,7 +15,7 @@ export default function RegisterForm({ onSwitch }) {
     try {
       e.preventDefault();
       await api.post("/register", { username, email, password });
-      navigate("/login");
+      navigate("/dashboard");
     } catch (error) {
       console.error(error);
     }

@@ -12,7 +12,7 @@ export default function LoginForm({ onSwitch }) {
     try {
       e.preventDefault();
       await api.post("/login", { username, password });
-      navigate("/register");
+      navigate("/dashboard");
     } catch (error) {
       console.error(error);
     }
