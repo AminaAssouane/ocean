@@ -1,0 +1,32 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 17px;
+  border-bottom: 1px solid var(--border);
+}
+
+.oceanIcon {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.headerTitle {
+  background: linear-gradient(to top, #0077b6 0%, #00b4d8 50%, #90e0ef 100%);
+  background-size: 100% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fill 2s ease-in-out infinite alternate;
+}
+
+@keyframes fill {
+  0% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
