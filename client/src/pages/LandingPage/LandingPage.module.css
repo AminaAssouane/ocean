@@ -33,14 +33,14 @@
   margin-top: 3rem;
 }
 
-input,
-button {
+.authSection input,
+.authSectio button {
   border-radius: 999px;
   width: 350px;
   height: 42px;
 }
 
-input {
+.authSection input {
   padding-left: 20px;
 }
 

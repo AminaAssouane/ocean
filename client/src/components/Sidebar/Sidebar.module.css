@@ -29,3 +29,9 @@
   border-radius: 999px;
   font-weight: 700;
 }
+
+.sideBarContainer button {
+  border: none;
+  background-color: var(--background);
+  font-size: 1.2rem;
+}

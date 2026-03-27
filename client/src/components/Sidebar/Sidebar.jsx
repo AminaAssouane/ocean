@@ -14,6 +14,7 @@ export default function Sidebar() {
     <aside className={styles.sideBarContainer}>
       <NavLink
         to="/dashboard"
+        end
         className={({ isActive }) =>
           isActive ? styles.active : styles.navLink
         }
@@ -53,14 +54,10 @@ export default function Sidebar() {
       >
         <Heart /> Likes
       </NavLink>
-      <NavLink
-        className={({ isActive }) =>
-          isActive ? styles.active : styles.navLink
-        }
-      >
+      <button className={styles.navLink}>
         <LogOut />
         Logout
-      </NavLink>
+      </button>
     </aside>
   );
 }
