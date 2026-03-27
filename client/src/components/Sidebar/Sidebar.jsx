@@ -1,4 +1,4 @@
-import { NavLink, redirect } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import api from "../../services/api";
 import styles from "./Sidebar.module.css";
 import {
@@ -11,10 +11,11 @@ import {
 } from "lucide-react";
 
 export default function Sidebar() {
+  const navigate = useNavigate();
   async function handleClick() {
     try {
       await api.post("/logout");
-      redirect("/");
+      navigate("/");
     } catch (error) {
       console.error("Failed to logout. ", error);
     }
