@@ -4,8 +4,12 @@ import { createBrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
 import LandingPage from "./pages/LandingPage/LandingPage.jsx";
+import DashboardLayout from "./pages/DashboardLayout/DashboardLayout.jsx";
 
-const router = createBrowserRouter([{ path: "/", element: <LandingPage /> }]);
+const router = createBrowserRouter([
+  { path: "/", element: <LandingPage /> },
+  { path: "/dashboard", element: <DashboardLayout /> },
+]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
