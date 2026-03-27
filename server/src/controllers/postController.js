@@ -26,4 +26,19 @@ async function getPostById(req, res) {
   }
 }
 
-module.exports = { getPosts, getPostById };
+async function createPost(req, res) {
+  try {
+    const { content } = req.body;
+    if (!content || content.trim() === "") {
+      return res.status(400).json({ message: "Content is required" });
+    }
+    const authorId = parseInt(req.user.id);
+    const post = await prisma.post.create({ data: { authorId, content } });
+    res.json(post);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Failed to create post" });
+  }
+}
+
+module.exports = { getPosts, getPostById, createPost };
