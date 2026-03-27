@@ -16,6 +16,10 @@
   --hover: aliceblue;
 }
 
+/* #root {
+  background-color: aliceblue;
+} */
+
 .dark {
   --background: black;
   --color: white;
