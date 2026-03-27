@@ -6,6 +6,7 @@ const passport = require("passport");
 require("./config/passport");
 
 const authRouter = require("./routes/authRouter");
+const postRouter = require("./routes/postRouter");
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/", authRouter);
+app.use("/dashboard", postRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, (error) => {
