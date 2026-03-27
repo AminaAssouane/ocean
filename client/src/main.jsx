@@ -6,6 +6,7 @@ import App from "./App.jsx";
 import LandingPage from "./pages/LandingPage/LandingPage.jsx";
 import DashboardLayout from "./pages/DashboardLayout/DashboardLayout.jsx";
 import Feed from "./pages/Feed/Feed.jsx";
+import Post from "./pages/Post/Post.jsx";
 import Profile from "./pages/Profile/Profile.jsx";
 
 const router = createBrowserRouter([
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
     element: <DashboardLayout />,
     children: [
       { index: true, element: <Feed /> },
+      { path: "post/:id", element: <Post /> },
       { path: "profile", element: <Profile /> },
     ],
   },
