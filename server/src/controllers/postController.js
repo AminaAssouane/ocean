@@ -41,4 +41,21 @@ async function createPost(req, res) {
   }
 }
 
-module.exports = { getPosts, getPostById, createPost };
+async function removePost(req, res) {
+  try {
+    const postId = parseInt(req.params.id);
+
+    const post = await prisma.post.findUnique({
+      where: { id: postId },
+    });
+    if (!post) return res.status(404).json({ message: "Post not found" });
+
+    await prisma.post.delete({ where: { id: postId } });
+    res.json(post);
+  } catch (error) {
+    console.error(error);
+    res.status(404).json({ message: "Post not found" });
+  }
+}
+
+module.exports = { getPosts, getPostById, createPost, removePost };
