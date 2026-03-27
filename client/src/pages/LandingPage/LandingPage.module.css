@@ -77,13 +77,13 @@ footer a:hover {
   gap: 20px;
 }
 
-p:nth-child(1) {
+.authSection :nth-child(1) {
   font-size: 1.5rem;
   font-weight: 800;
   color: var(--color);
 }
 
-p:nth-child(2) {
+.authSection :nth-child(2) {
   font-size: 0.9rem;
   color: var(--secondary);
 }
