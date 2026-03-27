@@ -33,7 +33,7 @@ export default function Feed() {
 
   return (
     <>
-      <h1>Feed</h1>
+      <h1>Your feed</h1>
       <section>
         <textarea
           name="content"

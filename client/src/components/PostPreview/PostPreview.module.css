@@ -1,0 +1,21 @@
+.postPreviewContainer {
+  margin: 20px;
+  padding: 10px 20px;
+  border-radius: 16px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.postPreviewContainer:hover {
+  cursor: pointer;
+  background-color: aliceblue;
+}
+
+.username {
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.content {
+  margin-bottom: 10px;
+}
