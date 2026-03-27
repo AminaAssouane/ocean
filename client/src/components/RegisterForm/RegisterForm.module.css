@@ -5,18 +5,18 @@
 }
 
 .signUpBtn {
-  background-color: black;
-  color: white;
+  background-color: var(--color);
+  color: var(--background);
   border: none;
 }
 
-div {
+.proposition {
   font-size: 0.9rem;
-  color: gray;
+  color: var(--secondary);
 }
 
 .loginBtn {
-  color: black;
+  color: var(--color);
   font-weight: 800;
   font-size: 1.1rem;
 }

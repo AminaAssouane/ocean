@@ -42,7 +42,7 @@ export default function LoginForm({ onSwitch }) {
         </button>
       </form>
       <button className={styles.guestBtn}>Guest User</button>
-      <p>
+      <p className={styles.proposition}>
         Don't have an account?{" "}
         <a onClick={onSwitch} className={styles.signUpBtn}>
           Sign up!

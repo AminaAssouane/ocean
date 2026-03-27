@@ -59,11 +59,11 @@ footer {
   text-align: center;
   margin-top: auto;
   margin-bottom: 1.5rem;
-  color: rgb(92, 91, 91);
+  color: var(--footer);
 }
 
 footer a:hover {
-  color: black;
+  color: var(--color);
   font-weight: 600;
 }
 
@@ -80,12 +80,12 @@ footer a:hover {
 p:nth-child(1) {
   font-size: 1.5rem;
   font-weight: 800;
-  color: black;
+  color: var(--color);
 }
 
 p:nth-child(2) {
   font-size: 0.9rem;
-  color: gray;
+  color: var(--secondary);
 }
 
 @keyframes fill {

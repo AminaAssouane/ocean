@@ -60,7 +60,7 @@ export default function RegisterForm({ onSwitch }) {
           Sign Up
         </button>
       </form>
-      <div>
+      <div className={styles.proposition}>
         Already have an account?{" "}
         <a onClick={onSwitch} className={styles.loginBtn}>
           Login

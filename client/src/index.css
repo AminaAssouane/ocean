@@ -9,6 +9,9 @@
   --background: white;
   --color: black;
   --primary: #3995d6;
+  --secondary: gray;
+  --footer: rgb(92, 91, 91);
+  --input: #3b3b3b;
 }
 
 .dark {

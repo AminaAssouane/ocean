@@ -12,39 +12,39 @@
 
 input {
   border: none;
-  background-color: #3b3b3b;
+  background-color: var(--input);
   font-size: 1rem;
-  color: white;
+  color: var(--background);
 }
 
 .loginBtn {
   border: none;
-  color: white;
-  background-color: black;
+  color: var(--background);
+  background-color: var(--color);
 }
 
 .guestBtn {
   margin-bottom: 12px;
   background: linear-gradient(to right, #e0724a, #c850c0, #4158d0);
-  color: white;
+  color: var(--background);
   font-weight: 700;
   border: none;
   cursor: pointer;
 }
 
-p {
+.proposition {
   font-size: 0.9rem;
-  color: gray;
+  color: var(--secondary);
 }
 
 .signUpBtn {
-  color: black;
+  color: var(--color);
   font-weight: 800;
   font-size: 1.1rem;
 }
 
 button:hover {
-  border: 2px solid black;
-  color: black;
-  background: white;
+  border: 2px solid var(--color);
+  color: var(--color);
+  background: var(--background);
 }
