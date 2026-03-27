@@ -4,6 +4,11 @@ async function getPosts(req, res) {
   try {
     const posts = await prisma.post.findMany({
       orderBy: { createdAt: "desc" },
+      include: {
+        author: {
+          select: { username: true },
+        },
+      },
     });
     res.json(posts);
   } catch (error) {
