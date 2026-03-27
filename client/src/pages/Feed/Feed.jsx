@@ -47,7 +47,9 @@ export default function Feed() {
       <section>
         <div>Posts : </div>
         {posts.map((post) => (
-          <p key={post.id}>{post.content}</p>
+          <p key={post.id}>
+            {post.author.username}: {post.content}
+          </p>
         ))}
       </section>
     </>
