@@ -3,20 +3,21 @@
   grid-template-areas:
     "header header"
     "sidebar main";
-  grid-template-columns: 1fr 5fr;
-  grid-template-rows: auto;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: auto 1fr;
 
   min-height: 100vh;
 }
 
-.dashboardLayout .header {
+.header {
   grid-area: header;
 }
 
-.dashboardLayout .sidebar {
+.sidebar {
   grid-area: sidebar;
+  border-right: 1px solid var(--border);
 }
 
-.dashboardLayout .main {
+.main {
   grid-area: main;
 }

@@ -1,0 +1,30 @@
+.sideBarContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 50px;
+  font-size: 1.2rem;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 20px;
+  border-radius: 999px;
+}
+
+.navLink:hover {
+  background-color: var(--hover);
+}
+
+.active {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background-color: aliceblue;
+  padding: 10px 20px;
+  border-radius: 999px;
+}
