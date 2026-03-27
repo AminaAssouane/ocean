@@ -1,4 +1,5 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, redirect } from "react-router-dom";
+import api from "../../services/api";
 import styles from "./Sidebar.module.css";
 import {
   House,
@@ -10,6 +11,15 @@ import {
 } from "lucide-react";
 
 export default function Sidebar() {
+  async function handleClick() {
+    try {
+      await api.post("/logout");
+      redirect("/");
+    } catch (error) {
+      console.error("Failed to logout. ", error);
+    }
+  }
+
   return (
     <aside className={styles.sideBarContainer}>
       <NavLink
@@ -54,7 +64,7 @@ export default function Sidebar() {
       >
         <Heart /> Likes
       </NavLink>
-      <button className={styles.navLink}>
+      <button className={styles.navLink} onClick={handleClick}>
         <LogOut />
         Logout
       </button>
