@@ -32,4 +32,19 @@ async function login(req, res, next) {
   }
 }
 
-module.exports = { register, login };
+async function logout(req, res) {
+  try {
+    req.logout((error) => {
+      if (error) {
+        console.error("Failed to logout.", error);
+        return res.status(500).json({ message: "Logout failed." });
+      }
+      res.status(200).json({ message: "Logged out successfully" });
+    });
+  } catch (error) {
+    console.error("Failed to logout. ", error);
+    res.status(500).json({ message: "Logout failed." });
+  }
+}
+
+module.exports = { register, login, logout };
