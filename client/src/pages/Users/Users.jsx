@@ -9,7 +9,7 @@ export default function Users() {
   async function handleSearch(e) {
     try {
       setQuery(e.target.value);
-      const res = await api.get(`/users/search?username=${query}`);
+      const res = await api.get(`/users/search?username=${e.target.value}`);
       setResults(res.data);
     } catch (error) {
       console.error("Failed to search for users. ", error);
@@ -22,7 +22,11 @@ export default function Users() {
         <input type="text" value={query} onChange={handleSearch} />
         <button>Search</button>
       </section>
-      <section className={styles.userList}></section>
+      <section className={styles.userList}>
+        {results.map((user) => (
+          <div key={user.id}>{user.username}</div>
+        ))}
+      </section>
     </div>
   );
 }
