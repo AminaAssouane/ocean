@@ -1,8 +1,9 @@
 const { Router } = require("express");
 const userRouter = Router();
 const userController = require("../controllers/userController");
+const authMiddleware = require("../middleware/authMiddleware");
 
-userRouter.get("/:id", userController.getUser);
-userRouter.update("/:id", userController.updateUser);
+userRouter.get("/:id", authMiddleware, userController.getUser);
+userRouter.patch("/:id", authMiddleware, userController.updateUser);
 
 module.exports = userRouter;
