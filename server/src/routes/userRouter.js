@@ -4,7 +4,7 @@ const userController = require("../controllers/userController");
 const authMiddleware = require("../middleware/authMiddleware");
 
 userRouter.get("/", authMiddleware, userController.getMe);
-userRouter.get("/:id", authMiddleware, userController.getUser);
+userRouter.get("/:id", authMiddleware, userController.getUserById);
 userRouter.patch("/:id", authMiddleware, userController.updateUser);
 
 module.exports = userRouter;

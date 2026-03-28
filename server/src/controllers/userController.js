@@ -11,7 +11,7 @@ async function getMe(req, res) {
   }
 }
 
-async function getUser(req, res) {
+async function getUserById(req, res) {
   try {
     const userId = parseInt(req.params.id);
     const user = await prisma.user.findUnique({ where: { id: userId } });
@@ -47,4 +47,4 @@ async function updateUser(req, res) {
   }
 }
 
-module.exports = { getMe, getUser, updateUser };
+module.exports = { getMe, getUserById, updateUser };
