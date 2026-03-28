@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import PostPreview from "../../components/PostPreview/PostPreview";
 import api from "../../services/api";
+import styles from "./Feed.module.css";
+import { SendHorizontal } from "lucide-react";
 
 export default function Feed() {
   const [content, setContent] = useState("");
@@ -32,9 +34,9 @@ export default function Feed() {
   }, []);
 
   return (
-    <>
-      <h1>Your feed</h1>
-      <section>
+    <div className={styles.feedContainer}>
+      <h1 className={styles.title}>Your feed</h1>
+      <section className={styles.addPostContainer}>
         <textarea
           name="content"
           id=""
@@ -42,15 +44,17 @@ export default function Feed() {
           required
           value={content}
           onChange={(e) => setContent(e.target.value)}
+          className={styles.textarea}
         ></textarea>
-        <button onClick={handlePost}>Post</button>
+        <button onClick={handlePost} className={styles.postBtn}>
+          <SendHorizontal />
+        </button>
       </section>
       <section>
-        <div>Posts : </div>
         {posts.map((post) => (
           <PostPreview key={post.id} post={post} />
         ))}
       </section>
-    </>
+    </div>
   );
 }
