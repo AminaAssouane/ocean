@@ -47,4 +47,22 @@ async function updateUser(req, res) {
   }
 }
 
-module.exports = { getMe, getUserById, updateUser };
+async function searchUser(req, res) {
+  try {
+    const { username } = req.query;
+    const results = await prisma.user.findMany({
+      where: {
+        username: { contains: username, mode: "insensitive" },
+        NOT: { id: req.user.id },
+      },
+      select: { id: true, username: true, avatar: true },
+      take: 10,
+    });
+    res.json(results);
+  } catch (error) {
+    console.error("Failed to search users. ", error);
+    res.status(500).json({ message: "Failed to search users." });
+  }
+}
+
+module.exports = { getMe, getUserById, updateUser, searchUser };
