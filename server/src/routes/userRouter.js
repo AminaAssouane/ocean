@@ -3,6 +3,7 @@ const userRouter = Router();
 const userController = require("../controllers/userController");
 const authMiddleware = require("../middleware/authMiddleware");
 
+userRouter.get("/", authMiddleware, userController.getMe);
 userRouter.get("/:id", authMiddleware, userController.getUser);
 userRouter.patch("/:id", authMiddleware, userController.updateUser);
 
