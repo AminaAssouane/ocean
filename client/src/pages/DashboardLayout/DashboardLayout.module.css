@@ -11,18 +11,30 @@
 
 .header {
   grid-area: header;
+  border-radius: 0 0 16px 16px;
+  background-color: var(--alt-background);
+  margin: 0 0 10px 0;
 }
 
 .sidebar {
   grid-area: sidebar;
-  border-right: 1px solid var(--border);
+  /* border-right: 1px solid var(--border); */
+  border-radius: 16px 16px 16px 0;
+  background-color: var(--alt-background);
+  margin: 0 10px 0 0;
 }
 
 .recommendations {
   grid-area: recommendations;
-  border-left: 1px solid var(--border);
+  /* border-left: 1px solid var(--border); */
+  border-radius: 16px 16px 0 16px;
+  background-color: var(--alt-background);
+  margin: 0 0 0 10px;
 }
 
 .main {
   grid-area: main;
+  border-radius: 16px 16px 16px 16px;
+  background-color: var(--alt-background);
+  margin: 0 0 0 0;
 }

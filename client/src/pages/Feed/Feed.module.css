@@ -7,7 +7,7 @@
 .addPostContainer {
   display: flex;
   flex-direction: column;
-  margin: 20px 20px 40px 20px;
+  margin: 20px 30px 40px 20px;
 }
 
 .textarea {
@@ -24,6 +24,7 @@
     rgba(3, 132, 158, 0.2) 15px 15px,
     rgba(3, 132, 158, 0.1) 20px 20px,
     rgba(3, 132, 158, 0.05) 25px 25px;
+  background-color: var(--background);
 }
 
 .postBtn {
