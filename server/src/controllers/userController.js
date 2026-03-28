@@ -14,4 +14,26 @@ async function getUser(req, res) {
   }
 }
 
-module.exports = { getUser };
+async function updateUser(req, res) {
+  try {
+    const userId = parseInt(req.params.id);
+    if (userId !== req.user.id)
+      return res
+        .status(403)
+        .json({ message: "Forbidden: cannot update another user" });
+    const bio = req.body.bio ?? req.user.bio;
+    const avatar = req.body.avatar ?? req.user.avatar;
+    const cover = req.body.cover ?? req.user.cover;
+
+    const updatedUser = await prisma.user.update({
+      where: { id: userId },
+      data: { bio, avatar, cover },
+    });
+    res.json({ message: "User updated", user: updatedUser });
+  } catch (error) {
+    console.error("Failed to update user. ", error);
+    res.status(500).json({ message: "Failed to update user." });
+  }
+}
+
+module.exports = { getUser, updateUser };
