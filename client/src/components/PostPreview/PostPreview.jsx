@@ -10,7 +10,9 @@ export default function PostPreview({ post }) {
   return (
     <article onClick={handleClick} className={styles.postPreviewContainer}>
       <div className={styles.username}>
-        <Link to={`users/${authorId}`}>{post.author.username}</Link>
+        <Link to={`users/${authorId}`} onClick={(e) => e.stopPropagation()}>
+          {post.author.username}
+        </Link>
       </div>
       <div className={styles.content}>{post.content}</div>
     </article>
