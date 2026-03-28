@@ -9,6 +9,7 @@ import Feed from "./pages/Feed/Feed.jsx";
 import Post from "./pages/Post/Post.jsx";
 import Profile from "./pages/Profile/Profile.jsx";
 import CreatePost from "./pages/CreatePost/CreatePost.jsx";
+import UserProfile from "./pages/UserProfile/UserProfile.jsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <LandingPage /> },
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       { path: "post/:postId", element: <Post /> },
       { path: "profile", element: <Profile /> },
       { path: "create", element: <CreatePost /> },
+      { path: "users/:userId", element: <UserProfile /> },
     ],
   },
 ]);

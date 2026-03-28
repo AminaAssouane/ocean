@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import styles from "./PostPreview.module.css";
 
 export default function PostPreview({ post }) {
@@ -6,9 +6,12 @@ export default function PostPreview({ post }) {
   function handleClick() {
     navigate(`/dashboard/post/${post.id}`);
   }
+  const authorId = post.authorId;
   return (
     <article onClick={handleClick} className={styles.postPreviewContainer}>
-      <div className={styles.username}>{post.author.username}</div>
+      <div className={styles.username}>
+        <Link to={`users/${authorId}`}>{post.author.username}</Link>
+      </div>
       <div className={styles.content}>{post.content}</div>
     </article>
   );
