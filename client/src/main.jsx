@@ -8,6 +8,7 @@ import DashboardLayout from "./pages/DashboardLayout/DashboardLayout.jsx";
 import Feed from "./pages/Feed/Feed.jsx";
 import Post from "./pages/Post/Post.jsx";
 import Profile from "./pages/Profile/Profile.jsx";
+import CreatePost from "./pages/CreatePost/CreatePost.jsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <LandingPage /> },
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
       { index: true, element: <Feed /> },
       { path: "post/:postId", element: <Post /> },
       { path: "profile", element: <Profile /> },
+      { path: "create", element: <CreatePost /> },
     ],
   },
 ]);
