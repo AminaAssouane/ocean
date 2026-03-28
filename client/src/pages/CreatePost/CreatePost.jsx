@@ -1,5 +1,7 @@
 import { useState } from "react";
 import api from "../../services/api";
+import styles from "./CreatePost.module.css";
+import { SendHorizontal } from "lucide-react";
 
 export default function CreatePost() {
   const [content, setContent] = useState("");
@@ -15,18 +17,22 @@ export default function CreatePost() {
     }
   }
   return (
-    <section>
-      <textarea
-        name="content"
-        id=""
-        placeholder="What's happening?"
-        required
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-      ></textarea>
-      <button onClick={handlePost}>
-        <SendHorizontal />
-      </button>
-    </section>
+    <>
+      <h1 className={styles.title}>Create a post</h1>
+      <section className={styles.addPostContainer}>
+        <textarea
+          name="content"
+          id=""
+          placeholder="Write your post!"
+          required
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          className={styles.textarea}
+        ></textarea>
+        <button onClick={handlePost} className={styles.postBtn}>
+          <SendHorizontal />
+        </button>
+      </section>
+    </>
   );
 }
