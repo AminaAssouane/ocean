@@ -1,5 +1,16 @@
 const prisma = require("../lib/prisma");
 
+async function getMe(req, res) {
+  try {
+    const userId = parseInt(req.user.id);
+    const user = await prisma.user.findUnique({ where: { id: userId } });
+    res.json(user);
+  } catch (error) {
+    console.error("Failed to fetch self. ", error);
+    res.status(500).json({ message: "Failed to fetch self." });
+  }
+}
+
 async function getUser(req, res) {
   try {
     const userId = parseInt(req.params.id);
@@ -10,7 +21,7 @@ async function getUser(req, res) {
     res.json(user);
   } catch (error) {
     console.error("Failed to fetch user. ", error);
-    res.status(500).json({ message: "Failed to fetch user." });
+    res.status(500).json({ message: "Failed to fetch user" });
   }
 }
 
@@ -36,4 +47,4 @@ async function updateUser(req, res) {
   }
 }
 
-module.exports = { getUser, updateUser };
+module.exports = { getMe, getUser, updateUser };
