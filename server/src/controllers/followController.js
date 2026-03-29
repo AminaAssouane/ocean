@@ -47,7 +47,9 @@ async function unfollow(req, res) {
   const userId = parseInt(req.params.id);
   try {
     const unfollow = await prisma.follower.delete({
-      where: { followerId: myId, followingId: userId },
+      where: {
+        followerId_followingId: { followerId: myId, followingId: userId },
+      },
     });
     res.json(unfollow);
   } catch (error) {
