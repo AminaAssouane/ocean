@@ -10,6 +10,7 @@ const postRouter = require("./routes/postRouter");
 const userRouter = require("./routes/userRouter");
 const followRouter = require("./routes/followRouter");
 const likeRouter = require("./routes/likeRouter");
+const commentRouter = require("./routes/commentRouter");
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.use("/dashboard", postRouter);
 app.use("/users", userRouter);
 app.use("/followers", followRouter);
 app.use("/likes", likeRouter);
+app.use("/comments", commentRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, (error) => {
