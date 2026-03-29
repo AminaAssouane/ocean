@@ -5,7 +5,7 @@ import {
   House,
   CircleUser,
   SquarePlus,
-  Users,
+  UserSearch,
   Heart,
   LogOut,
 } from "lucide-react";
@@ -55,7 +55,7 @@ export default function Sidebar() {
           isActive ? styles.active : styles.navLink
         }
       >
-        <Users /> Users
+        <UserSearch /> Users
       </NavLink>
       <NavLink
         to="/dashboard/liked"

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import api from "../../services/api";
+import FollowButton from "../../components/FollowButton/FollowButton";
 
 export default function UserProfile() {
   const { userId } = useParams();
@@ -22,7 +23,9 @@ export default function UserProfile() {
 
   return (
     <section>
-      <div>{user.username}</div>
+      <div>
+        {user.username} <FollowButton />
+      </div>
     </section>
   );
 }
