@@ -42,4 +42,18 @@ async function follow(req, res) {
   }
 }
 
-module.exports = { getFollowers, getFollowing, follow };
+async function unfollow(req, res) {
+  const myId = parseInt(req.user.id);
+  const userId = parseInt(req.params.id);
+  try {
+    const unfollow = await prisma.follower.delete({
+      where: { followerId: myId, followingId: userId },
+    });
+    res.json(unfollow);
+  } catch (error) {
+    console.error("Failed unfollowing user. ", error);
+    res.status(500).json({ message: "Failed unfollowing user." });
+  }
+}
+
+module.exports = { getFollowers, getFollowing, follow, unfollow };
