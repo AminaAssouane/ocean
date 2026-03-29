@@ -1,10 +1,11 @@
 const likeRouter = require("express").Router();
 const likeController = require("../controllers/likeController");
+const authMiddleware = require("../middleware/authMiddleware");
 
-likeRouter.get("/", likeController.getLikedPosts);
-likeRouter.get("/:id", likeController.isLiked);
-likeRouter.post("/:id", likeController.like);
-likeRouter.delete("/:id", likeController.dislike);
-likeRouter.get("/:id/nb", likeController.getNbLikes);
+likeRouter.get("/", authMiddleware, likeController.getLikedPosts);
+likeRouter.get("/:id", authMiddleware, likeController.isLiked);
+likeRouter.post("/:id", authMiddleware, likeController.like);
+likeRouter.delete("/:id", authMiddleware, likeController.dislike);
+likeRouter.get("/:id/nb", authMiddleware, likeController.getNbLikes);
 
 module.exports = likeRouter;

@@ -5,7 +5,9 @@ async function getLikedPosts(req, res) {
   try {
     const posts = await prisma.like.findMany({
       where: { userId: id },
-      include: { post: true },
+      include: {
+        post: { include: { author: { select: { username: true } } } },
+      },
       orderBy: { post: { createdAt: "desc" } },
     });
     res.json(posts);
