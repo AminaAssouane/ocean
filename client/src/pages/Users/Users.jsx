@@ -29,8 +29,8 @@ export default function Users() {
       </section>
       <section className={styles.userList}>
         {results.map((user) => (
-          <div>
-            <div key={user.id}>{user.username}</div> <FollowButton />
+          <div key={user.id}>
+            {user.username} <FollowButton userId={user.id} />
           </div>
         ))}
       </section>

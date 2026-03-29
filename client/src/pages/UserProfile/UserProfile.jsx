@@ -24,7 +24,7 @@ export default function UserProfile() {
   return (
     <section>
       <div>
-        {user.username} <FollowButton />
+        {user.username} <FollowButton userId={userId} />
       </div>
     </section>
   );
