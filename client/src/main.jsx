@@ -11,6 +11,7 @@ import Profile from "./pages/Profile/Profile.jsx";
 import CreatePost from "./pages/CreatePost/CreatePost.jsx";
 import UserProfile from "./pages/UserProfile/UserProfile.jsx";
 import Users from "./pages/Users/Users.jsx";
+import Likes from "./pages/Likes/Likes.jsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <LandingPage /> },
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
       { path: "create", element: <CreatePost /> },
       { path: "users/:userId", element: <UserProfile /> },
       { path: "users", element: <Users /> },
+      { path: "likes", element: <Likes /> },
     ],
   },
 ]);
