@@ -15,4 +15,16 @@ async function getLikedPosts(req, res) {
   }
 }
 
-module.exports = { getLikedPosts };
+async function like(req, res) {
+  const userId = parseInt(req.user.id);
+  const postId = parseInt(req.params.id);
+  try {
+    const like = await prisma.like.create({ data: { postId, userId } });
+    res.json(like);
+  } catch (error) {
+    console.error("Failed liking post. ", error);
+    res.status(500).json({ message: "Failed liking post." });
+  }
+}
+
+module.exports = { getLikedPosts, like };
