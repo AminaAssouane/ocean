@@ -14,4 +14,18 @@ async function getFollowers(req, res) {
   }
 }
 
-module.exports = { getFollowers };
+async function getFollowing(req, res) {
+  const userId = parseInt(req.params.id);
+  try {
+    const following = await prisma.follower.findMany({
+      where: { followerId: userId },
+      include: { following: true },
+    });
+    res.json(following);
+  } catch (error) {
+    console.error("Failed fetching following users. ", error);
+    res.status(500).json({ message: "Failed fetching following users." });
+  }
+}
+
+module.exports = { getFollowers, getFollowing };
