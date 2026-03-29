@@ -12,7 +12,7 @@ export default function FollowButton({ userId, initialFollowing = false }) {
       }
       setIsFollowed(!isFollowed);
     } catch (error) {
-      console.error("Failed to follow user. ", error);
+      console.error("Failed to follow/unfollow user. ", error);
     }
   }
 
