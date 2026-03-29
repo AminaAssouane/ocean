@@ -27,4 +27,18 @@ async function like(req, res) {
   }
 }
 
-module.exports = { getLikedPosts, like };
+async function dislike(req, res) {
+  const userId = parseInt(req.user.id);
+  const postId = parseInt(req.params.id);
+  try {
+    const dislike = await prisma.like.delete({
+      where: { postId_userId: { postId, userId } },
+    });
+    res.json(dislike);
+  } catch (error) {
+    console.error("Failed disliking post. ", error);
+    res.status(500).json({ message: "Failed disliking post." });
+  }
+}
+
+module.exports = { getLikedPosts, like, dislike };
