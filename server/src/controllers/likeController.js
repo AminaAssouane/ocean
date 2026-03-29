@@ -41,4 +41,15 @@ async function dislike(req, res) {
   }
 }
 
-module.exports = { getLikedPosts, like, dislike };
+async function getNbLikes(req, res) {
+  const postId = parseInt(req.params.id);
+  try {
+    const likes = await prisma.like.findMany({ where: { postId } });
+    res.json(likes.length);
+  } catch (error) {
+    onsole.error("Failed fetching number of likes. ", error);
+    res.status(500).json({ message: "Failed fetching number of likes." });
+  }
+}
+
+module.exports = { getLikedPosts, like, dislike, getNbLikes };
