@@ -15,6 +15,21 @@ async function getLikedPosts(req, res) {
   }
 }
 
+async function isLiked(req, res) {
+  const userId = parseInt(req.user.id);
+  const postId = parseInt(req.params.id);
+  try {
+    const like = await prisma.like.findUnique({
+      where: { postId_userId: { postId, userId } },
+    });
+    if (!like) return res.json(false);
+    else res.json(true);
+  } catch (error) {
+    console.error("Failed fetching post like status. ", error);
+    res.status(500).json({ message: "Failed fetching post like status." });
+  }
+}
+
 async function like(req, res) {
   const userId = parseInt(req.user.id);
   const postId = parseInt(req.params.id);
@@ -52,4 +67,4 @@ async function getNbLikes(req, res) {
   }
 }
 
-module.exports = { getLikedPosts, like, dislike, getNbLikes };
+module.exports = { getLikedPosts, isLiked, like, dislike, getNbLikes };
