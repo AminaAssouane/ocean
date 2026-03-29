@@ -1,0 +1,17 @@
+const prisma = require("../lib/prisma");
+
+async function getFollowers(req, res) {
+  const userId = parseInt(req.params.id);
+  try {
+    const followers = await prisma.follower.findMany({
+      where: { followingId: userId },
+      include: { follower: true },
+    });
+    res.json(followers);
+  } catch (error) {
+    console.error("Failed fetching followers. ", error);
+    res.status(500).json({ message: "Failed fetching followers." });
+  }
+}
+
+module.exports = { getFollowers };
