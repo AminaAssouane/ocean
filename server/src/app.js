@@ -9,6 +9,7 @@ const authRouter = require("./routes/authRouter");
 const postRouter = require("./routes/postRouter");
 const userRouter = require("./routes/userRouter");
 const followRouter = require("./routes/followRouter");
+const likeRouter = require("./routes/likeRouter");
 
 const app = express();
 
@@ -35,6 +36,7 @@ app.use("/", authRouter);
 app.use("/dashboard", postRouter);
 app.use("/users", userRouter);
 app.use("/followers", followRouter);
+app.use("/likes", likeRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, (error) => {
