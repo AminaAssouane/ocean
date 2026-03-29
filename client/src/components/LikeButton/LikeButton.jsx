@@ -3,7 +3,8 @@ import api from "../../services/api";
 
 export default function LikeButton({ postId, initialState = false }) {
   const [liked, setLiked] = useState(initialState);
-  async function handleClick() {
+  async function handleClick(e) {
+    e.stopPropagation();
     try {
       if (liked) {
         await api.delete(`likes/${postId}`);
