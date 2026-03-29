@@ -11,4 +11,15 @@ async function getComments(req, res) {
   }
 }
 
-module.exports = { getComments };
+async function createComment(req, res) {
+  try {
+    const content = req.body.content;
+    const comment = await prisma.comment.create({ data: { content } });
+    res.json(comment);
+  } catch (error) {
+    console.error("Failed creating comment. ", error);
+    res.status(500).json({ message: "Failed creating comment." });
+  }
+}
+
+module.exports = { getComments, createComment };
