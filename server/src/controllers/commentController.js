@@ -3,7 +3,11 @@ const prisma = require("../lib/prisma");
 async function getComments(req, res) {
   const postId = parseInt(req.params.id);
   try {
-    const comments = await prisma.comment.findMany({ where: { postId } });
+    const comments = await prisma.comment.findMany({
+      where: { postId },
+      include: { user: { select: { username: true } } },
+      orderBy: { createdAt: "desc" },
+    });
     res.json(comments);
   } catch (error) {
     console.error("Failed fetching comments. ", error);
@@ -14,7 +18,8 @@ async function getComments(req, res) {
 async function createComment(req, res) {
   try {
     const content = req.body.content;
-    const comment = await prisma.comment.create({ data: { content } });
+    const postId = parseInt(req.params.id);
+    const comment = await prisma.comment.create({ data: { content, postId } });
     res.json(comment);
   } catch (error) {
     console.error("Failed creating comment. ", error);
