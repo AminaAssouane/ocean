@@ -58,7 +58,7 @@ export default function Sidebar() {
         <UserSearch /> Users
       </NavLink>
       <NavLink
-        to="/dashboard/liked"
+        to="/dashboard/likes"
         className={({ isActive }) =>
           isActive ? styles.active : styles.navLink
         }

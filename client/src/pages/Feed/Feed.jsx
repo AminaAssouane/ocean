@@ -23,9 +23,7 @@ export default function Feed() {
     async function getPosts() {
       try {
         const res = await api.get("/dashboard");
-        console.log(res.data);
         setPosts(res.data);
-        console.log(posts);
       } catch (error) {
         console.error("Failed to fetch posts. ", error);
       }
