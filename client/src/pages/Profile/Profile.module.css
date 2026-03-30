@@ -36,7 +36,14 @@
 }
 
 .date {
+  display: flex;
+  gap: 5px;
   color: var(--secondary);
+}
+
+.dateIcon {
+  height: 1rem;
+  width: 1rem;
 }
 
 .followInfo {

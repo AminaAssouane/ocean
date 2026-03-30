@@ -4,8 +4,7 @@ import api from "../../services/api";
 import PostPreview from "../../components/PostPreview/PostPreview";
 import FollowButton from "../../components/FollowButton/FollowButton";
 import styles from "./UserProfile.module.css";
-import avatar from "../../assets/images/ProfilePic.png";
-import cover from "../../assets/images/ocean-cover.jpg";
+import { CalendarDays } from "lucide-react";
 
 export default function UserProfile() {
   const { userId } = useParams();
@@ -40,7 +39,7 @@ export default function UserProfile() {
     async function isFollowed() {
       try {
         const isFollowed = await api.get(`/followers/${userId}/isfollowed`);
-        setFollowed(isFollowed);
+        setFollowed(isFollowed.data);
       } catch (error) {
         console.error("Failed to check if user is followed of not. ", error);
       }
@@ -50,7 +49,7 @@ export default function UserProfile() {
 
   if (
     !user ||
-    !followed ||
+    followed === null ||
     following === null ||
     followers === null ||
     posts === null
@@ -60,19 +59,24 @@ export default function UserProfile() {
   return (
     <section>
       <div className={styles.coverContainer}>
-        <img src={cover} alt="" className={styles.cover} />
-        <img src={avatar} alt="" className={styles.avatar} />
+        <img src={user.cover} alt="" className={styles.cover} />
+        <img src={user.avatar} alt="" className={styles.avatar} />
       </div>
       <div className={styles.infoContainer}>
         <div className={styles.username}>{user.username}</div>
         <FollowButton userId={userId} initialFollowing={followed} />
         <div className={styles.date}>
-          Joined{" "}
-          {new Date(user.createdAt).toLocaleDateString("en-GB", {
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-          })}
+          <div>
+            <CalendarDays className={styles.dateIcon} />
+          </div>{" "}
+          <div>
+            Joined{" "}
+            {new Date(user.createdAt).toLocaleDateString("en-GB", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })}
+          </div>
         </div>
         <div className={styles.followInfo}>
           <div className={styles.following}>

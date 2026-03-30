@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import PostPreview from "../../components/PostPreview/PostPreview";
 import api from "../../services/api";
 import styles from "./Profile.module.css";
-import avatar from "../../assets/images/ProfilePic.png";
-import cover from "../../assets/images/ocean-cover.jpg";
+import { CalendarDays } from "lucide-react";
 
 export default function Profile() {
   const [user, setUser] = useState(null);
@@ -40,18 +39,23 @@ export default function Profile() {
   return (
     <section>
       <div className={styles.coverContainer}>
-        <img src={cover} alt="" className={styles.cover} />
-        <img src={avatar} alt="" className={styles.avatar} />
+        <img src={user.cover} alt="" className={styles.cover} />
+        <img src={user.avatar} alt="" className={styles.avatar} />
       </div>
       <div className={styles.infoContainer}>
         <div className={styles.username}>{user.username}</div>
         <div className={styles.date}>
-          Joined{" "}
-          {new Date(user.createdAt).toLocaleDateString("en-GB", {
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-          })}
+          <div>
+            <CalendarDays className={styles.dateIcon} />
+          </div>{" "}
+          <div>
+            Joined{" "}
+            {new Date(user.createdAt).toLocaleDateString("en-GB", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })}
+          </div>
         </div>
         <div className={styles.followInfo}>
           <div className={styles.following}>

@@ -18,8 +18,10 @@ export default function PostPreview({ post }) {
         </Link>
       </div>
       <div className={styles.content}>{post.content}</div>
-      <LikeButton postId={post.id} />
-      <CommentButton postId={post.id} />
+      <div className={styles.buttons}>
+        <LikeButton postId={post.id} />
+        <CommentButton postId={post.id} />
+      </div>
     </article>
   );
 }
