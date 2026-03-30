@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../../services/api";
 
-export default function CommentsSection({ postId }) {
+export default function CommentSection({ postId }) {
   const [comments, setComments] = useState([]);
   const [content, setContent] = useState("");
 

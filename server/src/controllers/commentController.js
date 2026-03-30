@@ -19,7 +19,10 @@ async function createComment(req, res) {
   try {
     const content = req.body.content;
     const postId = parseInt(req.params.id);
-    const comment = await prisma.comment.create({ data: { content, postId } });
+    const userId = parseInt(req.user.id);
+    const comment = await prisma.comment.create({
+      data: { content, postId, userId },
+    });
     res.json(comment);
   } catch (error) {
     console.error("Failed creating comment. ", error);
