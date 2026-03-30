@@ -26,11 +26,21 @@
 
 .username {
   margin-top: 3rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   font-size: 1.5rem;
   font-weight: 700;
 }
 
+.username::first-letter {
+  text-transform: uppercase;
+}
+
 .date {
   color: var(--secondary);
+}
+
+.followInfo {
+  display: flex;
+  gap: 20px;
+  margin-top: 1rem;
 }
