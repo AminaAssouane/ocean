@@ -7,7 +7,7 @@ async function getFollowers(req, res) {
       where: { followingId: userId },
       include: { follower: true },
     });
-    res.json(followers);
+    res.json({ followers, count: followers.length });
   } catch (error) {
     console.error("Failed fetching followers. ", error);
     res.status(500).json({ message: "Failed fetching followers." });
@@ -21,7 +21,7 @@ async function getFollowing(req, res) {
       where: { followerId: userId },
       include: { following: true },
     });
-    res.json(following);
+    res.json({ following, count: following.length });
   } catch (error) {
     console.error("Failed fetching following users. ", error);
     res.status(500).json({ message: "Failed fetching following users." });
