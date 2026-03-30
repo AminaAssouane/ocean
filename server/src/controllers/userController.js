@@ -65,4 +65,23 @@ async function searchUser(req, res) {
   }
 }
 
-module.exports = { getMe, getUserById, updateUser, searchUser };
+async function getAllUsers(req, res) {
+  const page = parseInt(req.query.page) || 1;
+  const limit = 10;
+  const skip = (page - 1) * limit;
+  try {
+    const users = await prisma.user.findMany({
+      orderBy: { createdAt: "desc" },
+      take: limit,
+      skip,
+    });
+
+    const total = await prisma.user.count();
+    res.json({ users, total, pages: Math.ceil(total / limit) });
+  } catch (error) {
+    console.error("Failed to fetch all users. ", error);
+    res.status(500).json({ message: "Failed to fetch all users." });
+  }
+}
+
+module.exports = { getMe, getUserById, updateUser, searchUser, getAllUsers };
