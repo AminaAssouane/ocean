@@ -12,11 +12,21 @@ export default function PostPreview({ post }) {
 
   return (
     <article onClick={handleClick} className={styles.postPreviewContainer}>
-      <div className={styles.username}>
-        <Link to={`users/${authorId}`} onClick={(e) => e.stopPropagation()}>
-          {post.author.username}
-        </Link>
-      </div>
+      <Link
+        to={`users/${authorId}`}
+        onClick={(e) => e.stopPropagation()}
+        className={styles.userInfo}
+      >
+        <img src={post.author.avatar} alt="" className={styles.avatar} />
+        <div className={styles.username}>{post.author.username}</div> •
+        <div className={styles.date}>
+          {new Date(post.createdAt).toLocaleDateString("en-GB", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          })}
+        </div>
+      </Link>
       <div className={styles.content}>{post.content}</div>
       <div className={styles.buttons}>
         <LikeButton postId={post.id} />
