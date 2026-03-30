@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import api from "../../services/api";
+import LikeButton from "../../components/LikeButton/LikeButton";
+import CommentButton from "../../components/CommentButton/CommentButton";
+
 export default function Post() {
   const { postId } = useParams();
   const [post, setPost] = useState(null);
@@ -22,6 +25,8 @@ export default function Post() {
     <article>
       <h2>{post.author.username}</h2>
       <p>{post.content}</p>
+      <LikeButton postId={postId} />
+      <CommentButton postId={postId} />
     </article>
   );
 }

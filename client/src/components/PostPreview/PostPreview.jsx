@@ -1,6 +1,7 @@
 import { useNavigate, Link } from "react-router-dom";
 import styles from "./PostPreview.module.css";
 import LikeButton from "../LikeButton/LikeButton";
+import CommentButton from "../CommentButton/CommentButton";
 
 export default function PostPreview({ post }) {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ export default function PostPreview({ post }) {
       </div>
       <div className={styles.content}>{post.content}</div>
       <LikeButton postId={post.id} />
+      <CommentButton postId={post.id} />
     </article>
   );
 }
