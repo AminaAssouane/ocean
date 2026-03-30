@@ -6,7 +6,7 @@ async function getPosts(req, res) {
       orderBy: { createdAt: "desc" },
       include: {
         author: {
-          select: { username: true },
+          select: { username: true, avatar: true },
         },
       },
     });
@@ -22,7 +22,10 @@ async function getPostById(req, res) {
     const postId = parseInt(req.params.id);
     const post = await prisma.post.findUnique({
       where: { id: postId },
-      include: { author: { select: { username: true } }, comments: true },
+      include: {
+        author: { select: { username: true, avatar: true } },
+        comments: true,
+      },
     });
     if (!post) {
       return res.status(404).json({ message: "Post not found" });
@@ -78,7 +81,7 @@ async function getPostsOfUser(req, res) {
       orderBy: { createdAt: "desc" },
       include: {
         author: {
-          select: { username: true },
+          select: { username: true, avatar: true },
         },
       },
     });
