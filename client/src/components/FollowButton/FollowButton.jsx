@@ -1,5 +1,6 @@
 import { useState } from "react";
 import api from "../../services/api";
+import styles from "./FollowButton.module.css";
 
 export default function FollowButton({ userId, initialFollowing = false }) {
   const [isFollowed, setIsFollowed] = useState(initialFollowing);
@@ -17,6 +18,8 @@ export default function FollowButton({ userId, initialFollowing = false }) {
   }
 
   return (
-    <button onClick={handleClick}>{isFollowed ? "Unfollow" : "Follow"}</button>
+    <button onClick={handleClick} className={styles.followBtn}>
+      {isFollowed ? "Unfollow" : "Follow"}
+    </button>
   );
 }

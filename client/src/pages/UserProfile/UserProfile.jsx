@@ -63,8 +63,14 @@ export default function UserProfile() {
         <img src={user.avatar} alt="" className={styles.avatar} />
       </div>
       <div className={styles.infoContainer}>
-        <div className={styles.username}>{user.username}</div>
-        <FollowButton userId={userId} initialFollowing={followed} />
+        <div className={styles.userAndFollow}>
+          <div className={styles.username}>{user.username}</div>
+          <FollowButton
+            userId={userId}
+            initialFollowing={followed}
+            className={styles.followButton}
+          />
+        </div>
         <div className={styles.date}>
           <div>
             <CalendarDays className={styles.dateIcon} />

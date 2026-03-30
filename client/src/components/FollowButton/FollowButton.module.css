@@ -1,0 +1,11 @@
+.followBtn {
+  border-radius: 999px;
+  height: 2rem;
+  width: 6rem;
+  font-size: 1rem;
+  font-weight: 800;
+  margin-top: -3rem;
+  border: none;
+  background-color: var(--primary);
+  color: white;
+}

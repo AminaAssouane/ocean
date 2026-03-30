@@ -24,6 +24,11 @@
   padding: 2rem;
 }
 
+.userAndFollow {
+  display: flex;
+  justify-content: space-between;
+}
+
 .username {
   margin-top: 3rem;
   margin-bottom: 0.5rem;
