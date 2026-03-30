@@ -17,9 +17,11 @@ export default function CommentSection({ postId }) {
     fetchComments();
   }, []);
 
-  async function handlePost() {
+  async function handlePost(e) {
+    e.stopPropagation();
     try {
       await api.post(`/comments/${postId}`, { content });
+      setContent("");
     } catch (error) {
       console.error("Failed creating comment. ", error);
     }
@@ -32,10 +34,11 @@ export default function CommentSection({ postId }) {
         id=""
         value={content}
         onChange={(e) => setContent(e.target.value)}
+        onClick={(e) => e.stopPropagation()}
       ></textarea>
       <button onClick={handlePost}>Post</button>
       {comments.map((comment) => (
-        <div>{comment.content}</div>
+        <div key={comment.id}>{comment.content}</div>
       ))}
     </section>
   );
