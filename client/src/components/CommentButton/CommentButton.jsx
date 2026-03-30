@@ -1,5 +1,6 @@
 import { useState } from "react";
 import CommentSection from "../CommentSection/CommentSection";
+import { MessageCircle } from "lucide-react";
 
 export default function CommentButton({ postId }) {
   const [show, setShow] = useState(false);
@@ -11,7 +12,7 @@ export default function CommentButton({ postId }) {
 
   return (
     <section>
-      <button onClick={toggleCommentSection}>Comments</button>
+      <MessageCircle onClick={toggleCommentSection} />
       {show && <CommentSection postId={postId} />}
     </section>
   );

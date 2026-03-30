@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import api from "../../services/api";
+import { Heart } from "lucide-react";
 
 export default function LikeButton({ postId }) {
   const [liked, setLiked] = useState(false);
@@ -30,5 +31,5 @@ export default function LikeButton({ postId }) {
     isLiked();
   }, []);
 
-  return <button onClick={handleClick}>{liked ? "dislike" : "like"}</button>;
+  return <Heart onClick={handleClick} />;
 }
