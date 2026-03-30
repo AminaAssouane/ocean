@@ -58,6 +58,10 @@ async function removePost(req, res) {
     });
     if (!post) return res.status(404).json({ message: "Post not found" });
 
+    if (post.authorId !== req.user.id) {
+      return res.status(403).json({ message: "Not authorized" });
+    }
+
     await prisma.post.delete({ where: { id: postId } });
     res.json(post);
   } catch (error) {
