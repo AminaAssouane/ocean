@@ -10,8 +10,7 @@ export default function LikeButton({ postId }) {
       if (liked) {
         await api.delete(`/likes/${postId}`);
       } else {
-        const what = await api.post(`/likes/${postId}`);
-        console.log(what);
+        await api.post(`/likes/${postId}`);
       }
       setLiked(!liked);
     } catch (error) {
