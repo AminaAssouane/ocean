@@ -3,12 +3,22 @@
   padding: 10px 20px;
   border-radius: 16px;
   box-shadow: rgba(3, 132, 158, 0.4) 0px 3px 8px;
-  background-color: var(--background);
+  background-color: rgba(2, 162, 194, 0.1);
 }
 
 .postPreviewContainer:hover {
   cursor: pointer;
   background-color: var(--hover);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.trash {
+  color: red;
 }
 
 .userInfo {

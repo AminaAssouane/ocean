@@ -6,6 +6,25 @@
   font-weight: 800;
   margin-top: -3rem;
   border: none;
-  background-color: var(--primary);
+  color: white;
+}
+
+.follow {
+  background-color: forestgreen;
+}
+
+.follow:hover {
+  background-color: rgb(21, 91, 21);
+  border: none;
+  color: white;
+}
+
+.unfollow {
+  background-color: red;
+}
+
+.unfollow:hover {
+  background-color: rgb(160, 8, 8);
+  border: none;
   color: white;
 }

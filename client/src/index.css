@@ -13,8 +13,9 @@
   --footer: rgb(92, 91, 91);
   --input: #3b3b3b;
   --border: rgb(149, 149, 149);
-  --hover: rgb(213, 233, 251);
-  --alt-background: aliceblue;
+  --post-background: rgb(213, 233, 251);
+  --hover: rgb(231, 241, 249);
+  --alt-background: rgba(3, 191, 228, 0.1);
 }
 
 /* #root {

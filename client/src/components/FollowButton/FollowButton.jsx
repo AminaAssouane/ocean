@@ -18,7 +18,10 @@ export default function FollowButton({ userId, initialFollowing = false }) {
   }
 
   return (
-    <button onClick={handleClick} className={styles.followBtn}>
+    <button
+      onClick={handleClick}
+      className={`${styles.followBtn} ${isFollowed ? styles.unfollow : styles.follow}`}
+    >
       {isFollowed ? "Unfollow" : "Follow"}
     </button>
   );
