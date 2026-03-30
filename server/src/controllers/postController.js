@@ -66,4 +66,29 @@ async function removePost(req, res) {
   }
 }
 
-module.exports = { getPosts, getPostById, createPost, removePost };
+async function getPostsOfUser(req, res) {
+  const userId = parseInt(req.params.id);
+  try {
+    const posts = await prisma.user.findMany({
+      where: { authorId: userId },
+      orderBy: { createdAt: "desc" },
+      include: {
+        author: {
+          select: { username: true },
+        },
+      },
+    });
+    res.json(posts);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Failed fetching posts of user." });
+  }
+}
+
+module.exports = {
+  getPosts,
+  getPostById,
+  createPost,
+  removePost,
+  getPostsOfUser,
+};
