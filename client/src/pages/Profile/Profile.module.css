@@ -1,0 +1,36 @@
+.coverContainer {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.cover {
+  height: 17rem;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.avatar {
+  border-radius: 50%;
+  height: 10rem;
+  width: 10rem;
+  position: absolute;
+  bottom: -5rem;
+  left: 2rem;
+  border: 4px solid var(--alt-background);
+}
+
+.infoContainer {
+  padding: 2rem;
+}
+
+.username {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.date {
+  color: var(--secondary);
+}
