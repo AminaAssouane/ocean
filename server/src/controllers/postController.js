@@ -69,7 +69,7 @@ async function removePost(req, res) {
 async function getPostsOfUser(req, res) {
   const userId = parseInt(req.params.id);
   try {
-    const posts = await prisma.user.findMany({
+    const posts = await prisma.post.findMany({
       where: { authorId: userId },
       orderBy: { createdAt: "desc" },
       include: {
