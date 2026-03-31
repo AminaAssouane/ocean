@@ -3,6 +3,7 @@ import api from "../../services/api";
 import styles from "./Users.module.css";
 import FollowButton from "../../components/FollowButton/FollowButton";
 import { Search } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Users() {
   const [query, setQuery] = useState("");
@@ -44,8 +45,11 @@ export default function Users() {
       </div>
       <section className={styles.userList}>
         {results.map((user) => (
-          <div key={user.id}>
-            {user.username} <FollowButton userId={user.id} />
+          <div key={user.id} className={styles.user}>
+            <div className={styles.username}>
+              <Link to={`${user.id}`}>{user.username}</Link>
+            </div>
+            <FollowButton userId={user.id} className={styles.followButton} />
           </div>
         ))}
       </section>

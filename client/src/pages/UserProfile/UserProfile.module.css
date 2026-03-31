@@ -58,6 +58,11 @@
   font-size: 0.9rem;
 }
 
+.followButton {
+  margin-top: -2.5rem;
+  margin-right: -0.8rem;
+}
+
 .follow {
   color: var(--secondary);
 }

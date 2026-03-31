@@ -46,7 +46,9 @@ export default function UserProfile() {
       <div className={styles.infoContainer}>
         <div className={styles.userAndFollow}>
           <div className={styles.username}>{user.username}</div>
-          <FollowButton userId={userId} className={styles.followButton} />
+          <div className={styles.followButton}>
+            <FollowButton userId={userId} />
+          </div>
         </div>
         <div className={styles.date}>
           <div>

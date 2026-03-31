@@ -25,9 +25,12 @@
   }
 }
 
+/* Search input */
+
 .searchContainer {
   display: flex;
   justify-content: center;
+  margin-bottom: 3rem;
 }
 
 .searchSection {
@@ -67,4 +70,39 @@
 
 .searchIconHovered {
   color: var(--primary);
+}
+
+/* Users list */
+
+.userList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: var(--alt-background);
+  border-radius: 16px;
+  height: 3rem;
+  width: 20rem;
+  padding: 1rem;
+  border: 1px solid var(--alt-background);
+  font-weight: 600;
+}
+
+.user:hover {
+  border: 1px solid var(--primary);
+}
+
+.followButton {
+  margin-top: 0;
+}
+
+.username:hover {
+  text-decoration: underline;
 }
