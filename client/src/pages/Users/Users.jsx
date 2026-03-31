@@ -46,9 +46,10 @@ export default function Users() {
       <section className={styles.userList}>
         {results.map((user) => (
           <div key={user.id} className={styles.user}>
-            <div className={styles.username}>
-              <Link to={`${user.id}`}>{user.username}</Link>
-            </div>
+            <Link to={`${user.id}`} className={styles.username}>
+              <img src={`${user.avatar}`} alt="" className={styles.avatar} />
+              <div>{user.username}</div>
+            </Link>
             <FollowButton userId={user.id} className={styles.followButton} />
           </div>
         ))}
