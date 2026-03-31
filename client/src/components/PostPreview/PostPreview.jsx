@@ -1,14 +1,24 @@
 import { useNavigate, Link } from "react-router-dom";
+import { useState } from "react";
 import styles from "./PostPreview.module.css";
 import LikeButton from "../LikeButton/LikeButton";
 import CommentButton from "../CommentButton/CommentButton";
 import DeletePostButton from "../DeletePostButton/DeletePostButton";
+import CommentSection from "../CommentSection/CommentSection";
 
 export default function PostPreview({ post }) {
   const navigate = useNavigate();
+  const [showComments, setShowComments] = useState(false);
+
   function handleClick() {
     navigate(`/dashboard/post/${post.id}`);
   }
+
+  function handleCommentClick(e) {
+    e.stopPropagation();
+    setShowComments(!showComments);
+  }
+
   const authorId = post.authorId;
 
   return (
@@ -34,8 +44,13 @@ export default function PostPreview({ post }) {
       <div className={styles.content}>{post.content}</div>
       <div className={styles.buttons}>
         <LikeButton postId={post.id} />
-        <CommentButton postId={post.id} />
+        <CommentButton postId={post.id} onClick={handleCommentClick} />
       </div>
+      {showComments && (
+        <div onClick={(e) => e.stopPropagation()}>
+          <CommentSection postId={post.id} />
+        </div>
+      )}
     </article>
   );
 }

@@ -8,22 +8,26 @@
   color: white;
 }
 
+.followBtn:hover {
+  cursor: pointer;
+}
+
 .follow {
-  background-color: forestgreen;
+  background-color: rgb(6, 148, 148, 0.527);
 }
 
 .follow:hover {
-  background-color: rgb(21, 91, 21);
+  background-color: rgb(6, 148, 148);
   border: none;
   color: white;
 }
 
 .unfollow {
-  background-color: red;
+  background-color: rgb(255, 0, 0, 0.527);
 }
 
 .unfollow:hover {
-  background-color: rgb(160, 8, 8);
+  background-color: red;
   border: none;
   color: white;
 }

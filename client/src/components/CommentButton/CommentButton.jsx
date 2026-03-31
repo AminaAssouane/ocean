@@ -4,8 +4,7 @@ import { MessageCircle } from "lucide-react";
 import api from "../../services/api";
 import styles from "./CommentButton.module.css";
 
-export default function CommentButton({ postId }) {
-  const [show, setShow] = useState(false);
+export default function CommentButton({ postId, onClick }) {
   const [nbComments, setNbComments] = useState(0);
 
   function toggleCommentSection(e) {
@@ -27,13 +26,12 @@ export default function CommentButton({ postId }) {
 
   return (
     <section>
-      <div className={styles.nbComments} onClick={toggleCommentSection}>
+      <div className={styles.nbComments} onClick={onClick}>
         <div>
           <MessageCircle className={styles.comment} />
         </div>
         <div>{nbComments}</div>
       </div>
-      {show && <CommentSection postId={postId} />}
     </section>
   );
 }

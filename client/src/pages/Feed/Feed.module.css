@@ -59,4 +59,5 @@
 .postBtn:hover {
   border: none;
   background-color: rgba(3, 132, 158, 0.4);
+  cursor: pointer;
 }

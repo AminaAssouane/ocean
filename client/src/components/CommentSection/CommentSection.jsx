@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../../services/api";
+import styles from "./CommentSection.module.css";
+import { SendHorizontal } from "lucide-react";
 
 export default function CommentSection({ postId }) {
   const [comments, setComments] = useState([]);
@@ -28,18 +30,39 @@ export default function CommentSection({ postId }) {
   }
 
   return (
-    <section>
-      <textarea
-        name=""
-        id=""
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-        onClick={(e) => e.stopPropagation()}
-      ></textarea>
-      <button onClick={handlePost}>Post</button>
-      {comments.map((comment) => (
-        <div key={comment.id}>{comment.content}</div>
-      ))}
+    <section className={styles.commentsContainer}>
+      <div className={styles.commentTextField}>
+        <textarea
+          name=""
+          id=""
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          onClick={(e) => e.stopPropagation()}
+          className={styles.textarea}
+          placeholder="Post your reply"
+        ></textarea>
+        <button onClick={handlePost} className={styles.postBtn}>
+          <SendHorizontal />
+        </button>
+      </div>
+      <div className={styles.commentList}>
+        {comments.map((comment) => (
+          <div key={comment.id} className={styles.comment}>
+            <div className={styles.commentInfo}>
+              <img src={comment.user.avatar} alt="" className={styles.avatar} />
+              <div className={styles.username}>{comment.user.username}</div> •
+              <div className={styles.date}>
+                {new Date(comment.createdAt).toLocaleDateString("en-GB", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })}
+              </div>
+            </div>
+            <div className={styles.content}>{comment.content}</div>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }
