@@ -47,7 +47,7 @@ export default function LikeButton({ postId }) {
           className={liked ? `${styles.likedHeart}` : `${styles.heart}`}
         />
       </div>{" "}
-      <div>{nbLikes}</div>
+      <div className={liked ? `${styles.likedNb}` : ``}>{nbLikes}</div>
     </div>
   );
 }

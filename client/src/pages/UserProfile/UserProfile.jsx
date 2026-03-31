@@ -9,7 +9,6 @@ import { CalendarDays } from "lucide-react";
 export default function UserProfile() {
   const { userId } = useParams();
   const [user, setUser] = useState(null);
-  const [followed, setFollowed] = useState(null);
   const [following, setFollowing] = useState(null);
   const [followers, setFollowers] = useState(null);
   const [posts, setPosts] = useState(null);
@@ -35,25 +34,7 @@ export default function UserProfile() {
     getUserData();
   }, []);
 
-  useEffect(() => {
-    async function isFollowed() {
-      try {
-        const isFollowed = await api.get(`/followers/${userId}/isfollowed`);
-        setFollowed(isFollowed.data);
-      } catch (error) {
-        console.error("Failed to check if user is followed of not. ", error);
-      }
-    }
-    isFollowed();
-  }, []);
-
-  if (
-    !user ||
-    followed === null ||
-    following === null ||
-    followers === null ||
-    posts === null
-  )
+  if (!user || following === null || followers === null || posts === null)
     return <p>Loading...</p>;
 
   return (
@@ -65,11 +46,7 @@ export default function UserProfile() {
       <div className={styles.infoContainer}>
         <div className={styles.userAndFollow}>
           <div className={styles.username}>{user.username}</div>
-          <FollowButton
-            userId={userId}
-            initialFollowing={followed}
-            className={styles.followButton}
-          />
+          <FollowButton userId={userId} className={styles.followButton} />
         </div>
         <div className={styles.date}>
           <div>

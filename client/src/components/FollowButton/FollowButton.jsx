@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import api from "../../services/api";
 import styles from "./FollowButton.module.css";
 
-export default function FollowButton({ userId, initialFollowing = false }) {
-  const [isFollowed, setIsFollowed] = useState(initialFollowing);
+export default function FollowButton({ userId }) {
+  const [isFollowed, setIsFollowed] = useState(null);
   async function handleClick() {
     try {
       if (!isFollowed) {
@@ -16,6 +16,20 @@ export default function FollowButton({ userId, initialFollowing = false }) {
       console.error("Failed to follow/unfollow user. ", error);
     }
   }
+
+  useEffect(() => {
+    async function isFollowed() {
+      try {
+        const isFollowed = await api.get(`/followers/${userId}/isfollowed`);
+        setIsFollowed(isFollowed.data);
+      } catch (error) {
+        console.error("Failed to check if user is followed of not. ", error);
+      }
+    }
+    isFollowed();
+  }, []);
+
+  if (isFollowed === null) return <div>Loading...</div>;
 
   return (
     <button
