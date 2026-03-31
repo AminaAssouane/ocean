@@ -1,4 +1,4 @@
-.likeSection {
+.nbComments {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -6,9 +6,10 @@
   color: var(--post-buttons);
 }
 
-.likeSection:hover {
-  color: red;
+.nbComments:hover {
+  color: var(--primary);
 }
-.heart {
+
+.comment {
   height: 1.3rem;
 }
