@@ -2,10 +2,12 @@ import { useState } from "react";
 import api from "../../services/api";
 import styles from "./Users.module.css";
 import FollowButton from "../../components/FollowButton/FollowButton";
+import { Search } from "lucide-react";
 
 export default function Users() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
+  const [isHovered, setIsHovered] = useState(false);
 
   async function handleSearch(e) {
     try {
@@ -22,11 +24,24 @@ export default function Users() {
   }
 
   return (
-    <div>
-      <section className={styles.searchSection}>
-        <input type="text" value={query} onChange={handleSearch} />
-        <button>Search</button>
-      </section>
+    <div className={styles.searchUsersWrapper}>
+      <h1 className={styles.title}>Search Users</h1>
+      <div className={styles.searchContainer}>
+        <section className={styles.searchSection}>
+          <Search
+            className={`${styles.searchIcon} ${isHovered ? styles.searchIconHovered : ""}`}
+          />
+          <input
+            type="text"
+            value={query}
+            onChange={handleSearch}
+            className={styles.input}
+            placeholder="Search for users"
+            onMouseOver={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          />
+        </section>
+      </div>
       <section className={styles.userList}>
         {results.map((user) => (
           <div key={user.id}>

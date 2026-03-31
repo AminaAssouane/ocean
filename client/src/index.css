@@ -14,7 +14,7 @@
   --input: #3b3b3b;
   --border: rgb(149, 149, 149);
   --post-background: rgb(213, 233, 251);
-  --hover: rgb(231, 241, 249);
+  --hover: rgba(3, 190, 228, 0.141);
   --alt-background: rgba(3, 191, 228, 0.1);
   --post-buttons: rgb(109, 109, 109);
 }
