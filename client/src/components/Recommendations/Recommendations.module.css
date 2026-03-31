@@ -30,7 +30,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.7rem;
 }
 
 .user {
@@ -84,6 +84,25 @@
   font-size: 1rem;
   font-weight: 600;
   border: none;
-  background-color: var(--secondary);
+  background-color: var(--primary);
   color: var(--background);
+  cursor: pointer;
+}
+
+.navButton:hover {
+  background-color: #0b7ed0;
+  border: none;
+  color: white;
+}
+
+.navButton:disabled {
+  background-color: var(--secondary);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.navButton:disabled:hover {
+  background-color: var(--secondary);
+  border: none;
+  color: white;
 }
