@@ -17,10 +17,6 @@
   align-items: center;
 }
 
-.trash {
-  color: red;
-}
-
 .userInfo {
   display: flex;
   align-items: center;

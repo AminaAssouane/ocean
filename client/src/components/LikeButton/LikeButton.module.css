@@ -1,0 +1,11 @@
+.likeSection {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  color: var(--secondary);
+}
+
+.likeSection:hover {
+  color: red;
+}

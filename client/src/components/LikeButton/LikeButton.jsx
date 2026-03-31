@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import api from "../../services/api";
 import { Heart } from "lucide-react";
+import styles from "./LikeButton.module.css";
 
 export default function LikeButton({ postId }) {
   const [liked, setLiked] = useState(false);
+  const [nbLikes, setNbLikes] = useState(0);
 
   async function handleClick(e) {
     e.stopPropagation();
@@ -24,6 +26,8 @@ export default function LikeButton({ postId }) {
       try {
         const res = await api.get(`/likes/${postId}`);
         setLiked(res.data);
+        const nbRes = await api.get(`/likes/${postId}/nb`);
+        setNbLikes(nbRes.data);
       } catch (error) {
         console.error("Failed to fetch like status of the post. ", error);
       }
@@ -31,5 +35,12 @@ export default function LikeButton({ postId }) {
     isLiked();
   }, []);
 
-  return <Heart onClick={handleClick} />;
+  return (
+    <div className={styles.likeSection}>
+      <div>
+        <Heart onClick={handleClick} />
+      </div>{" "}
+      <div>{nbLikes}</div>
+    </div>
+  );
 }

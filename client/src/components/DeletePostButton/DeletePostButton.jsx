@@ -1,4 +1,4 @@
-import { Trash } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import api from "../../services/api";
 import styles from "./DeletePostButton.module.css";
 
@@ -12,5 +12,5 @@ export default function DeletePostButton({ postId }) {
     }
   }
 
-  return <Trash onClick={handleClick} className={styles.trash} />;
+  return <Trash2 onClick={handleClick} className={styles.trash} />;
 }

@@ -2,7 +2,7 @@ import { useNavigate, Link } from "react-router-dom";
 import styles from "./PostPreview.module.css";
 import LikeButton from "../LikeButton/LikeButton";
 import CommentButton from "../CommentButton/CommentButton";
-import { Trash2 } from "lucide-react";
+import DeletePostButton from "../DeletePostButton/DeletePostButton";
 
 export default function PostPreview({ post }) {
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ export default function PostPreview({ post }) {
             })}
           </div>
         </Link>
-        <Trash2 className={styles.trash} />
+        <DeletePostButton postId={post.id} />
       </div>
       <div className={styles.content}>{post.content}</div>
       <div className={styles.buttons}>
