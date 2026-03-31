@@ -38,7 +38,7 @@
   cursor: pointer;
 }
 
-/* Comment list*/
+/* Comment list */
 
 .commentList {
   margin-top: 2rem;
@@ -52,7 +52,7 @@
   padding: 10px 20px;
   border-radius: 16px;
   box-shadow: rgba(3, 132, 158, 0.4) 0px 3px 8px;
-  background-color: rgba(2, 162, 194, 0.1);
+  background-color: rgb(225, 240, 249);
 }
 
 .comment:hover {
@@ -69,6 +69,10 @@
 .username {
   font-weight: 600;
   font-size: 1rem;
+}
+
+.username:hover {
+  text-decoration: underline;
 }
 
 .date {

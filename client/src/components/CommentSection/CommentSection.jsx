@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../../services/api";
 import styles from "./CommentSection.module.css";
 import { SendHorizontal } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function CommentSection({ postId }) {
   const [comments, setComments] = useState([]);
@@ -48,7 +49,11 @@ export default function CommentSection({ postId }) {
       <div className={styles.commentList}>
         {comments.map((comment) => (
           <div key={comment.id} className={styles.comment}>
-            <div className={styles.commentInfo}>
+            <Link
+              to={`users/${comment.user.id}`}
+              onClick={(e) => e.stopPropagation()}
+              className={styles.commentInfo}
+            >
               <img src={comment.user.avatar} alt="" className={styles.avatar} />
               <div className={styles.username}>{comment.user.username}</div> •
               <div className={styles.date}>
@@ -58,7 +63,7 @@ export default function CommentSection({ postId }) {
                   year: "numeric",
                 })}
               </div>
-            </div>
+            </Link>
             <div className={styles.content}>{comment.content}</div>
           </div>
         ))}
