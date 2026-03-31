@@ -9,6 +9,13 @@
 .likeSection:hover {
   color: red;
 }
+
 .heart {
   height: 1.3rem;
+}
+
+.likedHeart {
+  height: 1.3rem;
+  color: red;
+  fill: red;
 }
