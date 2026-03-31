@@ -27,12 +27,9 @@ export default function CommentButton({ postId }) {
 
   return (
     <section>
-      <div className={styles.nbComments}>
+      <div className={styles.nbComments} onClick={toggleCommentSection}>
         <div>
-          <MessageCircle
-            onClick={toggleCommentSection}
-            className={styles.comment}
-          />
+          <MessageCircle className={styles.comment} />
         </div>
         <div>{nbComments}</div>
       </div>

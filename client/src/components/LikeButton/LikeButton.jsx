@@ -40,12 +40,9 @@ export default function LikeButton({ postId }) {
   }, []);
 
   return (
-    <div className={styles.likeSection}>
+    <div className={styles.likeSection} onClick={handleClick}>
       <div>
-        <Heart
-          onClick={handleClick}
-          className={liked ? `${styles.likedHeart}` : `${styles.heart}`}
-        />
+        <Heart className={liked ? `${styles.likedHeart}` : `${styles.heart}`} />
       </div>{" "}
       <div className={liked ? `${styles.likedNb}` : ``}>{nbLikes}</div>
     </div>

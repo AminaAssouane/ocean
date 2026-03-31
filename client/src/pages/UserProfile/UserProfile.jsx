@@ -32,7 +32,7 @@ export default function UserProfile() {
       }
     }
     getUserData();
-  }, []);
+  }, [userId]);
 
   if (!user || following === null || followers === null || posts === null)
     return <p>Loading...</p>;

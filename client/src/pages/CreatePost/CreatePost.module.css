@@ -1,7 +1,12 @@
 .title {
-  margin: 20px;
+  background: linear-gradient(to top, #0077b6 0%, #00b4d8 50%, #90e0ef 100%);
+  background-size: 100% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fill 2s ease-in-out infinite alternate;
   text-align: center;
-  color: #0077b6;
+  margin: 20px;
 }
 
 .addPostContainer {
@@ -39,4 +44,13 @@
 .postBtn:hover {
   border: none;
   background-color: rgba(3, 132, 158, 0.4);
+}
+
+@keyframes fill {
+  0% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
 }
