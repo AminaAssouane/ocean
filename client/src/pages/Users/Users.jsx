@@ -9,6 +9,7 @@ export default function Users() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [isHovered, setIsHovered] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
 
   async function handleSearch(e) {
     try {
@@ -30,7 +31,7 @@ export default function Users() {
       <div className={styles.searchContainer}>
         <section className={styles.searchSection}>
           <Search
-            className={`${styles.searchIcon} ${isHovered ? styles.searchIconHovered : ""}`}
+            className={`${styles.searchIcon} ${isHovered || isFocused ? styles.searchIconHovered : ""}`}
           />
           <input
             type="text"
@@ -40,6 +41,8 @@ export default function Users() {
             placeholder="Search for users"
             onMouseOver={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
           />
         </section>
       </div>
