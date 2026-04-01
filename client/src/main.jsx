@@ -12,20 +12,26 @@ import CreatePost from "./pages/CreatePost/CreatePost.jsx";
 import UserProfile from "./pages/UserProfile/UserProfile.jsx";
 import Users from "./pages/Users/Users.jsx";
 import Likes from "./pages/Likes/Likes.jsx";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.jsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <LandingPage /> },
   {
-    path: "/dashboard",
-    element: <DashboardLayout />,
+    element: <ProtectedRoute />,
     children: [
-      { index: true, element: <Feed /> },
-      { path: "post/:postId", element: <Post /> },
-      { path: "profile", element: <Profile /> },
-      { path: "create", element: <CreatePost /> },
-      { path: "users/:userId", element: <UserProfile /> },
-      { path: "users", element: <Users /> },
-      { path: "likes", element: <Likes /> },
+      {
+        path: "/dashboard",
+        element: <DashboardLayout />,
+        children: [
+          { index: true, element: <Feed /> },
+          { path: "post/:postId", element: <Post /> },
+          { path: "profile", element: <Profile /> },
+          { path: "create", element: <CreatePost /> },
+          { path: "users/:userId", element: <UserProfile /> },
+          { path: "users", element: <Users /> },
+          { path: "likes", element: <Likes /> },
+        ],
+      },
     ],
   },
 ]);
