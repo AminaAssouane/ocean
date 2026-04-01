@@ -27,8 +27,16 @@
 .dark {
   --background: black;
   --color: white;
-  --primary: #3995d6;
+  --primary: #75abd1;
+  --secondary: gray;
+  --footer: rgb(92, 91, 91);
+  --input: #3b3b3b;
+  --border: rgb(149, 149, 149);
+  --post-background: rgb(34, 148, 248);
+  --hover: rgba(3, 91, 109, 0.381);
   --alt-background: #111828;
+  --post-buttons: rgb(109, 109, 109);
+  --comment-background: #0f517a;
 }
 
 a {
