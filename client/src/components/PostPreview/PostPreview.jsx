@@ -42,6 +42,9 @@ export default function PostPreview({ post }) {
         <DeletePostButton postId={post.id} />
       </div>
       <div className={styles.content}>{post.content}</div>
+      {post.image && (
+        <img src={post.image} alt="" className={styles.postImage} />
+      )}
       <div className={styles.buttons}>
         <LikeButton postId={post.id} />
         <CommentButton postId={post.id} onClick={handleCommentClick} />
