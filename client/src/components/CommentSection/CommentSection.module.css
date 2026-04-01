@@ -66,6 +66,11 @@
   margin-bottom: 0.5rem;
 }
 
+.avatar {
+  height: 2rem;
+  width: 2rem;
+}
+
 .username {
   font-weight: 600;
   font-size: 1rem;
