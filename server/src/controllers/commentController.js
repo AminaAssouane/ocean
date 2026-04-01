@@ -46,7 +46,16 @@ async function createComment(req, res) {
 async function deleteComment(req, res) {
   try {
     const id = parseInt(req.params.id);
-    const comment = await prisma.comment.delete({ where: { id } });
+    const comment = await prisma.comment.findUnique({
+      where: { id },
+    });
+    if (!comment) return res.status(404).json({ message: "Comment not found" });
+
+    if (comment.userId !== req.user.id) {
+      return res.status(403).json({ message: "Not authorized" });
+    }
+
+    comment = await prisma.comment.delete({ where: { id } });
     res.json(comment);
   } catch (error) {
     console.error("Failed deleting comment. ", error);
