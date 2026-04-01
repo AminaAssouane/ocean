@@ -15,8 +15,9 @@
   --border: rgb(149, 149, 149);
   --post-background: rgb(213, 233, 251);
   --hover: rgba(3, 190, 228, 0.141);
-  --alt-background: rgba(3, 191, 228, 0.1);
+  --alt-background: #ebf8fc;
   --post-buttons: rgb(109, 109, 109);
+  --comment-background: #e1f0f9;
 }
 
 /* #root {

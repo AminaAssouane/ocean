@@ -38,16 +38,17 @@
   justify-content: space-between;
   align-items: center;
 
-  background-color: var(--alt-background);
+  background-color: var(--comment-background);
   border-radius: 16px;
   height: 4rem;
   width: 20rem;
   padding: 1rem;
-  border: 1px solid var(--alt-background);
+  border: 1px solid var(--comment-background);
   font-weight: 600;
 }
 
 .user:hover {
+  background-color: var(--hover);
   border: 1px solid var(--primary);
 }
 
@@ -67,6 +68,7 @@
 
 .avatar {
   height: 2.5rem;
+  width: 2.5rem;
   border-radius: 50%;
 }
 

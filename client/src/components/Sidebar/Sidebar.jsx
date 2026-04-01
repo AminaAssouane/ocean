@@ -66,7 +66,7 @@ export default function Sidebar() {
         <Heart /> Likes
       </NavLink>
       <button className={styles.navLink} onClick={handleClick}>
-        <LogOut />
+        <LogOut className={styles.logOut} />
         Logout
       </button>
     </aside>

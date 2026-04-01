@@ -24,7 +24,6 @@
   align-items: center;
   gap: 10px;
 
-  background-color: aliceblue;
   padding: 10px 20px;
   border-radius: 999px;
   font-weight: 700;
@@ -32,6 +31,7 @@
 
 .sideBarContainer button {
   border: none;
-  background-color: var(--alt-background);
   font-size: 1.2rem;
+  background-color: #ebf8fc;
+  margin-top: auto;
 }
