@@ -44,6 +44,8 @@
   display: flex;
   gap: 5px;
   color: var(--secondary);
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
 }
 
 .dateIcon {
@@ -54,7 +56,6 @@
 .followInfo {
   display: flex;
   gap: 20px;
-  margin-top: 1rem;
   font-size: 0.9rem;
 }
 
