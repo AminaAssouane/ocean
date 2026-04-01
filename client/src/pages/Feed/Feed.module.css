@@ -61,3 +61,31 @@
   background-color: rgba(3, 132, 158, 0.4);
   cursor: pointer;
 }
+
+/* Emojis */
+.textareaWrapper {
+  position: relative; /* ← needed for absolute child */
+}
+
+.emojiBtn {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.emojiBtn:hover {
+  border: none;
+  background: none;
+}
+
+.pickerWrapper {
+  position: absolute;
+}
+
+.smile {
+  color: black;
+  fill: #ffd224;
+}
