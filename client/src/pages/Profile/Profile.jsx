@@ -9,6 +9,7 @@ export default function Profile() {
   const [following, setFollowing] = useState(null);
   const [followers, setFollowers] = useState(null);
   const [posts, setPosts] = useState(null);
+  const [show, setShow] = useState(false);
   const avatarInputRef = useRef(null);
   const coverInputRef = useRef(null);
 
@@ -57,6 +58,20 @@ export default function Profile() {
     setUser(res.data);
   }
 
+  async function handleBioUpdate(e) {
+    e.preventDefault();
+    try {
+      const res = await api.patch("/users/bio", { bio: e.target.bio.value });
+      setUser(res.data);
+    } catch (error) {
+      console.error("Failed updating bio", error);
+    }
+  }
+
+  function showEdit() {
+    setShow(!show);
+  }
+
   if (!user || following === null || followers === null || posts === null)
     return <p>Loading...</p>;
 
@@ -64,20 +79,24 @@ export default function Profile() {
     <section>
       <div className={styles.coverContainer}>
         <img src={user.cover} alt="" className={styles.cover} />
-        <button
-          className={styles.editCoverBtn}
-          onClick={() => coverInputRef.current.click()}
-        >
-          <SquarePen size={16} />
-        </button>
+        {show && (
+          <button
+            className={styles.editCoverBtn}
+            onClick={() => coverInputRef.current.click()}
+          >
+            <SquarePen size={16} />
+          </button>
+        )}
         <div className={styles.avatarWrapper}>
           <img src={user.avatar} alt="" className={styles.avatar} />
-          <button
-            className={styles.editAvatarBtn}
-            onClick={() => avatarInputRef.current.click()}
-          >
-            <SquarePen size={14} />
-          </button>
+          {show && (
+            <button
+              className={styles.editAvatarBtn}
+              onClick={() => avatarInputRef.current.click()}
+            >
+              <SquarePen size={14} />
+            </button>
+          )}
         </div>
 
         <input
@@ -96,7 +115,40 @@ export default function Profile() {
         />
       </div>
       <div className={styles.infoContainer}>
-        <div className={styles.username}>{user.username}</div>
+        <div className={styles.userAndEdit}>
+          <div className={styles.username}>{user.username}</div>
+          <button className={styles.editButton} onClick={showEdit}>
+            Edit Profile
+          </button>
+        </div>
+        <div className={styles.bio}>
+          {!show && <div className={styles.bioContent}>{user.bio}</div>}
+
+          <div>
+            <form
+              action=""
+              onSubmit={handleBioUpdate}
+              style={{ display: show ? "block" : "none" }}
+            >
+              <input
+                type="text"
+                className={styles.bioInput}
+                name="bio"
+                value={user.bio}
+                onChange={(e) =>
+                  setUser((prev) => ({ ...prev, bio: e.target.value }))
+                }
+              />
+              <button
+                className={styles.editBioBtn}
+                onClick={() => setShow(false)}
+              >
+                <SquarePen size={14} />
+              </button>
+            </form>
+          </div>
+        </div>
+
         <div className={styles.date}>
           <div>
             <CalendarDays className={styles.dateIcon} />

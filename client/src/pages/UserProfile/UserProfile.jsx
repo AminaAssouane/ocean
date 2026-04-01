@@ -50,6 +50,7 @@ export default function UserProfile() {
             <FollowButton userId={userId} />
           </div>
         </div>
+        <div className={styles.bio}>{user.bio}</div>
         <div className={styles.date}>
           <div>
             <CalendarDays className={styles.dateIcon} />
