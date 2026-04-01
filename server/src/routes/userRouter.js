@@ -17,6 +17,7 @@ userRouter.patch(
   upload.single("cover"),
   userController.updateCover,
 );
+userRouter.patch("/bio", authMiddleware, userController.updateBio);
 userRouter.get("/search", authMiddleware, userController.searchUser);
 userRouter.get("/all", authMiddleware, userController.getAllUsers);
 userRouter.get("/:id", authMiddleware, userController.getUserById);

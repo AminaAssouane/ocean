@@ -85,7 +85,7 @@ async function getAllUsers(req, res) {
 }
 
 async function updateAvatar(req, res) {
-  const userId = req.user.id;
+  const userId = parseInt(req.user.id);
   try {
     const avatarUrl = req.file.path;
     const user = await prisma.user.update({
@@ -100,7 +100,7 @@ async function updateAvatar(req, res) {
 }
 
 async function updateCover(req, res) {
-  const userId = req.user.id;
+  const userId = parseInt(req.user.id);
   try {
     const coverUrl = req.file.path;
     const user = await prisma.user.update({
@@ -114,6 +114,21 @@ async function updateCover(req, res) {
   }
 }
 
+async function updateBio(req, res) {
+  const userId = parseInt(req.user.id);
+  const bio = req.body.bio;
+  try {
+    const user = await prisma.user.update({
+      where: { id: userId },
+      data: { bio: bio },
+    });
+    res.json(user);
+  } catch (error) {
+    console.error("Failed to update bio. ", error);
+    res.status(500).json({ message: "Failed to update bio." });
+  }
+}
+
 module.exports = {
   getMe,
   getUserById,
@@ -122,4 +137,5 @@ module.exports = {
   getAllUsers,
   updateAvatar,
   updateCover,
+  updateBio,
 };
