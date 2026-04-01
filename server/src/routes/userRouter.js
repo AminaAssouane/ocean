@@ -5,21 +5,21 @@ const authMiddleware = require("../middleware/authMiddleware");
 const { upload } = require("../config/cloudinary");
 
 userRouter.get("/", authMiddleware, userController.getMe);
-userRouter.get("/search", authMiddleware, userController.searchUser);
-userRouter.get("/all", authMiddleware, userController.getAllUsers);
-userRouter.get("/:id", authMiddleware, userController.getUserById);
-userRouter.patch("/:id", authMiddleware, userController.updateUser);
 userRouter.patch(
-  "/:id/avatar",
+  "/avatar",
   authMiddleware,
   upload.single("avatar"),
   userController.updateAvatar,
 );
 userRouter.patch(
-  "/:id/cover",
+  "/cover",
   authMiddleware,
   upload.single("cover"),
   userController.updateCover,
 );
+userRouter.get("/search", authMiddleware, userController.searchUser);
+userRouter.get("/all", authMiddleware, userController.getAllUsers);
+userRouter.get("/:id", authMiddleware, userController.getUserById);
+userRouter.patch("/:id", authMiddleware, userController.updateUser);
 
 module.exports = userRouter;

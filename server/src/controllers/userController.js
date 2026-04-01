@@ -85,9 +85,7 @@ async function getAllUsers(req, res) {
 }
 
 async function updateAvatar(req, res) {
-  const userId = parseInt(req.params.id);
-  if (userId !== req.user.id)
-    return res.status(403).json({ message: "Forbidden" });
+  const userId = req.user.id;
   try {
     const avatarUrl = req.file.path;
     const user = await prisma.user.update({
@@ -101,6 +99,21 @@ async function updateAvatar(req, res) {
   }
 }
 
+async function updateCover(req, res) {
+  const userId = req.user.id;
+  try {
+    const coverUrl = req.file.path;
+    const user = await prisma.user.update({
+      where: { id: userId },
+      data: { cover: coverUrl },
+    });
+    res.json(user);
+  } catch (error) {
+    console.error("Failed to update cover. ", error);
+    res.status(500).json({ message: "Failed to update cover." });
+  }
+}
+
 module.exports = {
   getMe,
   getUserById,
@@ -108,4 +121,5 @@ module.exports = {
   searchUser,
   getAllUsers,
   updateAvatar,
+  updateCover,
 };
