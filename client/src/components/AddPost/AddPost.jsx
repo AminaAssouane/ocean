@@ -4,7 +4,7 @@ import { SendHorizontal, Smile, Image } from "lucide-react";
 import api from "../../services/api";
 import styles from "./AddPost.module.css";
 
-export default function AddPost({ onPostCreated }) {
+export default function AddPost({ onPostCreated = null }) {
   const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
@@ -38,7 +38,7 @@ export default function AddPost({ onPostCreated }) {
       setContent("");
       setImage(null);
       setPreview(null);
-      onPostCreated();
+      if (onPostCreated) onPostCreated();
     } catch (error) {
       console.error("Failed to create post. ", error);
     }
@@ -51,7 +51,8 @@ export default function AddPost({ onPostCreated }) {
           placeholder="What's happening?"
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          className={styles.textarea}
+          className={`${styles.textarea}
+            ${onPostCreated ? styles.smallTextArea : styles.bigTextArea}`}
         />
         {preview && (
           <img src={preview} alt="preview" className={styles.preview} />
