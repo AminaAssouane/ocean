@@ -52,7 +52,7 @@ async function searchUser(req, res) {
     const { username } = req.query;
     const results = await prisma.user.findMany({
       where: {
-        username: { contains: username, mode: "insensitive" },
+        username: { startsWith: username, mode: "insensitive" },
         NOT: { id: req.user.id },
       },
       select: { id: true, username: true, avatar: true },
