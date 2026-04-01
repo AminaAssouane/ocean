@@ -25,16 +25,13 @@ export default function AddPost({ onPostCreated = null }) {
 
   async function handlePost() {
     try {
-      console.log("I enter");
       if (!content.trim()) return;
       const formData = new FormData();
       formData.append("content", content);
       if (image) formData.append("image", image);
-      console.log("I walk");
       await api.post("/dashboard/createPost", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      console.log("I get out");
       setContent("");
       setImage(null);
       setPreview(null);

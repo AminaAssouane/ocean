@@ -25,7 +25,7 @@ export default function PostPreview({ post }) {
     <article onClick={handleClick} className={styles.postPreviewContainer}>
       <div className={styles.top}>
         <Link
-          to={`users/${authorId}`}
+          to={`/dashboard/users/${authorId}`}
           onClick={(e) => e.stopPropagation()}
           className={styles.userInfo}
         >

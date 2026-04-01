@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import PostPreview from "../../components/PostPreview/PostPreview";
 import api from "../../services/api";
 import styles from "./Profile.module.css";
-import { CalendarDays } from "lucide-react";
+import { CalendarDays, SquarePen } from "lucide-react";
 
 export default function Profile() {
   const [user, setUser] = useState(null);
   const [following, setFollowing] = useState(null);
   const [followers, setFollowers] = useState(null);
   const [posts, setPosts] = useState(null);
+  const avatarInputRef = useRef(null);
+  const coverInputRef = useRef(null);
 
   useEffect(() => {
     async function getProfileData() {
@@ -62,7 +64,36 @@ export default function Profile() {
     <section>
       <div className={styles.coverContainer}>
         <img src={user.cover} alt="" className={styles.cover} />
-        <img src={user.avatar} alt="" className={styles.avatar} />
+        <button
+          className={styles.editCoverBtn}
+          onClick={() => coverInputRef.current.click()}
+        >
+          <SquarePen size={16} />
+        </button>
+        <div className={styles.avatarWrapper}>
+          <img src={user.avatar} alt="" className={styles.avatar} />
+          <button
+            className={styles.editAvatarBtn}
+            onClick={() => avatarInputRef.current.click()}
+          >
+            <SquarePen size={14} />
+          </button>
+        </div>
+
+        <input
+          type="file"
+          accept="image/*"
+          ref={coverInputRef}
+          onChange={handleCoverUpload}
+          style={{ display: "none" }}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          ref={avatarInputRef}
+          onChange={handleAvatarUpload}
+          style={{ display: "none" }}
+        />
       </div>
       <div className={styles.infoContainer}>
         <div className={styles.username}>{user.username}</div>
@@ -89,8 +120,6 @@ export default function Profile() {
             <span className={styles.follow}>Followers</span>
           </div>
         </div>
-        <input type="file" accept="image/*" onChange={handleAvatarUpload} />
-        <input type="file" accept="image/*" onChange={handleCoverUpload} />
       </div>
       <div className={styles.postsContainer}>
         {posts.map((post) => (
