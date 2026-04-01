@@ -67,3 +67,11 @@
 .smile:hover {
   color: black;
 }
+
+/* Images */
+
+.preview {
+  width: 20rem;
+  height: 20rem;
+  border-radius: 16px;
+}

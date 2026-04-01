@@ -57,9 +57,9 @@
 }
 
 .postImage {
-  width: 100%;
+  width: 20rem;
   height: 20rem;
-  border-radius: 12px;
+  border-radius: 16px;
   margin: 10px 0;
   object-fit: cover;
 }
