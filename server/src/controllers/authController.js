@@ -47,4 +47,12 @@ async function logout(req, res) {
   }
 }
 
-module.exports = { register, login, logout };
+async function isLoggedIn(req, res) {
+  if (req.isAuthenticated()) {
+    res.json(req.user);
+  } else {
+    res.status(401).json({ message: "Not logged in" });
+  }
+}
+
+module.exports = { register, login, logout, isLoggedIn };
