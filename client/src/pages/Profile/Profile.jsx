@@ -33,6 +33,19 @@ export default function Profile() {
     getProfileData();
   }, []);
 
+  async function handleAvatarUpload(e) {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("avatar", file);
+
+    const res = await api.patch(`/users/avatar`, formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+    setUser(res.data);
+  }
+
+  // in JSX
+
   if (!user || following === null || followers === null || posts === null)
     return <p>Loading...</p>;
 
@@ -67,6 +80,7 @@ export default function Profile() {
             <span className={styles.follow}>Followers</span>
           </div>
         </div>
+        <input type="file" accept="image/*" onChange={handleAvatarUpload} />
       </div>
       <div className={styles.postsContainer}>
         {posts.map((post) => (
