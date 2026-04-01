@@ -123,13 +123,12 @@ export default function Profile() {
         </div>
         <div className={styles.bio}>
           {!show && <div className={styles.bioContent}>{user.bio}</div>}
-
-          <div>
-            <form
-              action=""
-              onSubmit={handleBioUpdate}
-              style={{ display: show ? "block" : "none" }}
-            >
+          <form
+            action=""
+            onSubmit={handleBioUpdate}
+            style={{ display: show ? "block" : "none" }}
+          >
+            <div className={styles.inputAndBtn}>
               <input
                 type="text"
                 className={styles.bioInput}
@@ -145,8 +144,8 @@ export default function Profile() {
               >
                 <SquarePen size={14} />
               </button>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
 
         <div className={styles.date}>
