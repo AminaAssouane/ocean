@@ -44,7 +44,10 @@ async function createPost(req, res) {
       return res.status(400).json({ message: "Content is required" });
     }
     const authorId = parseInt(req.user.id);
-    const post = await prisma.post.create({ data: { authorId, content } });
+    const imageUrl = req.file ? req.file.path : null;
+    const post = await prisma.post.create({
+      data: { authorId, content, image: imageUrl },
+    });
     res.json(post);
   } catch (error) {
     console.error(error);
