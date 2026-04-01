@@ -43,7 +43,7 @@
 
 .emojiBtn {
   position: absolute;
-  bottom: 10px;
+  bottom: 0.5rem;
   left: 15px;
   background: none;
   border: none;
@@ -74,4 +74,27 @@
   width: 20rem;
   height: 20rem;
   border-radius: 16px;
+}
+
+.imageBtn {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 3rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.imageBtn:hover {
+  border: none;
+  background: none;
+}
+
+.imageIcon {
+  color: gray;
+  fill: rgb(188, 222, 252);
+}
+
+.imageIcon:hover {
+  color: black;
 }

@@ -80,7 +80,7 @@ export default function AddPost({ onPostCreated }) {
           onClick={() => fileInputRef.current.click()}
           className={styles.imageBtn}
         >
-          <Image size={25} />
+          <Image size={25} className={styles.imageIcon} />
         </button>
       </div>
       <button onClick={handlePost} className={styles.postBtn}>
