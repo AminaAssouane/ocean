@@ -43,4 +43,15 @@ async function createComment(req, res) {
   }
 }
 
-module.exports = { getNbComments, getComments, createComment };
+async function deleteComment(req, res) {
+  try {
+    const id = parseInt(req.params.id);
+    const comment = await prisma.comment.delete({ where: { id } });
+    res.json(comment);
+  } catch (error) {
+    console.error("Failed deleting comment. ", error);
+    res.status(500).json({ message: "Failed deleting comment." });
+  }
+}
+
+module.exports = { getNbComments, getComments, createComment, deleteComment };
