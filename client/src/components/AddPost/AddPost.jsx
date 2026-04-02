@@ -25,7 +25,7 @@ export default function AddPost({ onPostCreated = null }) {
 
   async function handlePost() {
     try {
-      if (!content.trim()) return;
+      if (!content.trim() && !image) return;
       const formData = new FormData();
       formData.append("content", content);
       if (image) formData.append("image", image);

@@ -87,8 +87,8 @@
 /* Images */
 
 .preview {
-  max-height: 20rem;
-  max-width: 20rem;
+  max-height: 44rem;
+  max-width: 44rem;
   border-radius: 12px;
   object-fit: cover;
 }

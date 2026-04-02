@@ -43,6 +43,12 @@
   background-color: var(--primary);
 }
 
+.editButton:hover {
+  background-color: #0b7ed0;
+  border: none;
+  color: white;
+}
+
 .inputAndBtn {
   display: flex;
   align-items: center;
