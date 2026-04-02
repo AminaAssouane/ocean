@@ -13,6 +13,7 @@ const likeRouter = require("./routes/likeRouter");
 const commentRouter = require("./routes/commentRouter");
 
 const app = express();
+app.set("trust proxy", 1);
 
 app.use(
   cors({
