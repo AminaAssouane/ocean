@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useUser } from "../../context/UserContext.jsx";
 import api from "../../services/api";
 import styles from "./CommentSection.module.css";
 import { SendHorizontal } from "lucide-react";
@@ -8,6 +9,7 @@ import DeleteCommentButton from "../DeleteCommentButton/DeleteCommentButton";
 export default function CommentSection({ postId }) {
   const [comments, setComments] = useState([]);
   const [content, setContent] = useState("");
+  const { currentUser } = useUser();
 
   useEffect(() => {
     async function fetchComments() {
@@ -70,7 +72,14 @@ export default function CommentSection({ postId }) {
                   })}
                 </div>
               </Link>
-              <DeleteCommentButton commentId={comment.id} />
+              {currentUser?.id === comment.user.id && (
+                <DeleteCommentButton
+                  commentId={comment.id}
+                  onDelete={(id) =>
+                    setComments(comments.filter((p) => p.id !== id))
+                  }
+                />
+              )}
             </div>
             <div className={styles.content}>{comment.content}</div>
           </div>
