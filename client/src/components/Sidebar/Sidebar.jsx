@@ -1,5 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import api from "../../services/api";
+import { useUser } from "../../context/UserContext.jsx";
 import styles from "./Sidebar.module.css";
 import {
   House,
@@ -12,6 +13,8 @@ import {
 
 export default function Sidebar() {
   const navigate = useNavigate();
+  const { currentUser } = useUser();
+
   async function handleClick() {
     try {
       await api.post("/logout");
@@ -65,10 +68,14 @@ export default function Sidebar() {
       >
         <Heart /> Likes
       </NavLink>
-      <button className={styles.navLink} onClick={handleClick}>
-        <LogOut className={styles.logOut} />
-        Logout
-      </button>
+
+      <div className={styles.logout}>
+        <div className={styles.userInfo}>
+          <img src={currentUser?.avatar} alt="" className={styles.avatar} />
+          <div className={styles.username}>{currentUser?.username}</div>
+        </div>
+        <LogOut className={styles.logoutBtn} onClick={handleClick} />
+      </div>
     </aside>
   );
 }

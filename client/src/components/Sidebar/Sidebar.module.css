@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 50px;
   font-size: 1.3rem;
+  padding-top: 50px;
+  height: 100%;
 }
 
 .navLink {
@@ -11,7 +12,8 @@
   align-items: center;
   gap: 10px;
 
-  padding: 10px 20px;
+  margin: 0 50px 0 40px;
+  padding: 10px 30px;
   border-radius: 999px;
 }
 
@@ -24,7 +26,8 @@
   align-items: center;
   gap: 10px;
 
-  padding: 10px 20px;
+  margin: 0 50px 0 40px;
+  padding: 10px 30px;
   border-radius: 999px;
   font-weight: 700;
 }
@@ -35,4 +38,42 @@
   background-color: var(--alt-background);
   color: var(--color);
   margin-top: auto;
+}
+
+.avatar {
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+}
+
+.logout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 7px 15px;
+  background-color: var(--comment-background);
+  border: 1px solid var(--comment-background);
+  border-radius: 16px;
+  font-weight: 600;
+  margin: auto 1rem 1.5rem 1rem;
+}
+
+.logout:hover {
+  background-color: var(--hover);
+  border: 1px solid var(--primary);
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.logoutBtn {
+  color: red;
+}
+
+.logoutBtn:hover {
+  cursor: pointer;
 }
