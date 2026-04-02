@@ -23,7 +23,12 @@ export default function Post() {
     getPostById(postId);
   }, []);
 
-  if (!post) return <RingLoader color="#1c74dd" />;
+  if (!post)
+    return (
+      <div className={styles.spinner}>
+        <RingLoader color="#0f488e" />;
+      </div>
+    );
 
   return (
     <article className={styles.postContainer}>

@@ -74,7 +74,11 @@ export default function Profile() {
   }
 
   if (!user || following === null || followers === null || posts === null)
-    return <RingLoader color="#1c74dd" />;
+    return (
+      <div className={styles.spinner}>
+        <RingLoader color="#0f488e" />;
+      </div>
+    );
 
   return (
     <section>
