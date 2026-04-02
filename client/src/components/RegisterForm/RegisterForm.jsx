@@ -8,16 +8,23 @@ export default function RegisterForm({ onSwitch }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      setError("Passwords must match");
+      return;
+    }
     try {
-      e.preventDefault();
+      setError("");
       await api.post("/register", { username, email, password });
       navigate("/dashboard");
     } catch (error) {
       console.error(error);
+      setError(error.response?.data?.message || "Registration failed");
     }
   }
 
@@ -66,6 +73,7 @@ export default function RegisterForm({ onSwitch }) {
           Login
         </a>
       </div>
+      <div className={styles.error}>{error}</div>
     </>
   );
 }
