@@ -3,7 +3,6 @@ import styles from "./LandingPage.module.css";
 import landingPic from "../../assets/images/LandingPic.png";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import RegisterForm from "../../components/RegisterForm/RegisterForm";
-import ThemeSwitcher from "../../components/ThemeSwitcher/ThemeSwitcher";
 
 export default function LandingPage() {
   const [view, setView] = useState("login");
@@ -11,10 +10,6 @@ export default function LandingPage() {
   return (
     <main className={styles.main}>
       <section className={styles.authSection}>
-        <div className={styles.theme}>
-          <ThemeSwitcher />
-        </div>
-
         <h1 className={styles.title}>Ocean</h1>
 
         <div className={styles.form}>
