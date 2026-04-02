@@ -7,7 +7,7 @@ import CommentButton from "../CommentButton/CommentButton";
 import DeletePostButton from "../DeletePostButton/DeletePostButton";
 import CommentSection from "../CommentSection/CommentSection";
 
-export default function PostPreview({ post, onDelete }) {
+export default function PostPreview({ post, onDelete, onDislike = null }) {
   const navigate = useNavigate();
   const { currentUser } = useUser();
   const [showComments, setShowComments] = useState(false);
@@ -54,7 +54,10 @@ export default function PostPreview({ post, onDelete }) {
         <img src={post.image} alt="" className={styles.postImage} />
       )}
       <div className={styles.buttons}>
-        <LikeButton postId={post.id} />
+        <LikeButton
+          postId={post.id}
+          onClick={onDislike ? onDislike : undefined}
+        />
         <CommentButton postId={post.id} onClick={handleCommentClick} />
       </div>
       {showComments && (

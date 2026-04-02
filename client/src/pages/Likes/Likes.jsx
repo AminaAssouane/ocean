@@ -4,7 +4,7 @@ import PostPreview from "../../components/PostPreview/PostPreview";
 import styles from "./Likes.module.css";
 
 export default function Likes() {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState(null);
   useEffect(() => {
     async function getLikedPosts() {
       try {
@@ -28,6 +28,9 @@ export default function Likes() {
             key={post.id}
             post={post}
             onDelete={(id) => setPosts(posts.filter((p) => p.id !== id))}
+            onDislike={(id) =>
+              setPosts((prev) => prev.filter((p) => p.id !== id))
+            }
           />
         ))}
       </div>
