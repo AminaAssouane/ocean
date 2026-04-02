@@ -1,5 +1,6 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
+import { useUser } from "../../context/UserContext.jsx";
 import styles from "./PostPreview.module.css";
 import LikeButton from "../LikeButton/LikeButton";
 import CommentButton from "../CommentButton/CommentButton";
@@ -8,6 +9,7 @@ import CommentSection from "../CommentSection/CommentSection";
 
 export default function PostPreview({ post }) {
   const navigate = useNavigate();
+  const { currentUser } = useUser();
   const [showComments, setShowComments] = useState(false);
 
   function handleClick() {
@@ -39,7 +41,9 @@ export default function PostPreview({ post }) {
             })}
           </div>
         </Link>
-        <DeletePostButton postId={post.id} />
+        {currentUser?.id === post.authorId && (
+          <DeletePostButton postId={post.id} />
+        )}
       </div>
       <div className={styles.content}>{post.content}</div>
       {post.image && (

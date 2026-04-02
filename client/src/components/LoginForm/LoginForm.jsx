@@ -1,17 +1,21 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../../context/UserContext";
 import api from "../../services/api";
 import styles from "./LoginForm.module.css";
 
 export default function LoginForm({ onSwitch }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const { setCurrentUser } = useUser();
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
     try {
       e.preventDefault();
       await api.post("/login", { username, password });
+      const userRes = await api.get("/users");
+      setCurrentUser(userRes.data);
       navigate("/dashboard");
     } catch (error) {
       console.error(error);

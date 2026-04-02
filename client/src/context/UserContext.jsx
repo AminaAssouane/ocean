@@ -10,11 +10,11 @@ export function UserProvider({ children }) {
     api
       .get("/users")
       .then((res) => setCurrentUser(res.data))
-      .catch(() => {});
+      .catch(() => setCurrentUser(null));
   }, []);
 
   return (
-    <UserContext.Provider value={{ currentUser }}>
+    <UserContext.Provider value={{ currentUser, setCurrentUser }}>
       {children}
     </UserContext.Provider>
   );
