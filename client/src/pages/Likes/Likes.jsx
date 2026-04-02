@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../../services/api";
 import PostPreview from "../../components/PostPreview/PostPreview";
 import styles from "./Likes.module.css";
+import { ClipLoader } from "react-spinners";
 
 export default function Likes() {
   const [posts, setPosts] = useState(null);
@@ -17,7 +18,12 @@ export default function Likes() {
     getLikedPosts();
   }, []);
 
-  if (!posts) return <div>Loading...</div>;
+  if (!posts)
+    return (
+      <div className="spinner">
+        <ClipLoader color="#0f488e" />
+      </div>
+    );
 
   return (
     <section>

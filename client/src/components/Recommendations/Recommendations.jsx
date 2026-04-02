@@ -4,6 +4,7 @@ import api from "../../services/api";
 import styles from "./Recommendations.module.css";
 import { Link } from "react-router-dom";
 import FollowButton from "../FollowButton/FollowButton";
+import { ClipLoader } from "react-spinners";
 
 export default function Recommendations() {
   const [users, setUsers] = useState([]);
@@ -20,7 +21,13 @@ export default function Recommendations() {
     fetchUsers();
   }, [page]);
 
-  if (!users) return <div>Loading...</div>;
+  if (!users)
+    return (
+      <div className="spinner">
+        <ClipLoader color="#0f488e" />
+      </div>
+    );
+
   return (
     <div className={styles.recsContainer}>
       <h2 className={styles.title}>All users : </h2>

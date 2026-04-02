@@ -5,6 +5,7 @@ import PostPreview from "../../components/PostPreview/PostPreview";
 import FollowButton from "../../components/FollowButton/FollowButton";
 import styles from "./UserProfile.module.css";
 import { CalendarDays } from "lucide-react";
+import { ClipLoader } from "react-spinners";
 
 export default function UserProfile() {
   const { userId } = useParams();
@@ -35,7 +36,11 @@ export default function UserProfile() {
   }, [userId]);
 
   if (!user || following === null || followers === null || posts === null)
-    return <p>Loading...</p>;
+    return (
+      <div className="spinner">
+        <ClipLoader color="#0f488e" />
+      </div>
+    );
 
   return (
     <section>

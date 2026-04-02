@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import api from "../../services/api";
 import styles from "./FollowButton.module.css";
+import { ClipLoader } from "react-spinners";
 
 export default function FollowButton({ userId }) {
   const [isFollowed, setIsFollowed] = useState(null);
@@ -29,7 +30,7 @@ export default function FollowButton({ userId }) {
     isFollowed();
   }, []);
 
-  if (isFollowed === null) return <div>Loading...</div>;
+  if (isFollowed === null) return <ClipLoader color="#0f488e" />;
 
   return (
     <button
