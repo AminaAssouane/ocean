@@ -40,9 +40,9 @@ async function getPostById(req, res) {
 async function createPost(req, res) {
   try {
     const { content } = req.body;
-    if (!content || content.trim() === "") {
-      return res.status(400).json({ message: "Content is required" });
-    }
+    // if (!content || content.trim() === "") {
+    //   return res.status(400).json({ message: "Content is required" });
+    // }
     const authorId = parseInt(req.user.id);
     const imageUrl = req.file ? req.file.path : null;
     const post = await prisma.post.create({

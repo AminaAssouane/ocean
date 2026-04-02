@@ -31,7 +31,7 @@ model User {
 
 model Post {
   id        Int        @id @default(autoincrement())
-  content   String
+  content   String?
   createdAt DateTime @default(now())
   image     String?
   authorId  Int
