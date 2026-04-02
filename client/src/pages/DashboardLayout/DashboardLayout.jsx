@@ -32,17 +32,39 @@ export default function DashboardLayout() {
       <main className={styles.main}>
         <Outlet />
       </main>
+
       <nav className={styles.bottomNav}>
-        <NavLink to="/dashboard" end>
+        <NavLink
+          to="/dashboard"
+          end
+          className={({ isActive }) =>
+            isActive ? styles.active : styles.navLink
+          }
+        >
           <House />
         </NavLink>
-        <NavLink to="/dashboard/profile">
+        <NavLink
+          to="/dashboard/profile"
+          className={({ isActive }) =>
+            isActive ? styles.active : styles.navLink
+          }
+        >
           <CircleUser />
         </NavLink>
-        <NavLink to="/dashboard/users">
+        <NavLink
+          to="/dashboard/users"
+          className={({ isActive }) =>
+            isActive ? styles.active : styles.navLink
+          }
+        >
           <UserSearch />
         </NavLink>
-        <NavLink to="/dashboard/likes">
+        <NavLink
+          to="/dashboard/likes"
+          className={({ isActive }) =>
+            isActive ? styles.active : styles.navLink
+          }
+        >
           <Heart />
         </NavLink>
         <LogOut className={styles.logoutBtn} onClick={handleClick} />

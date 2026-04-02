@@ -22,6 +22,18 @@ export default function LoginForm({ onSwitch }) {
     }
   }
 
+  async function handleGuestUser(e) {
+    try {
+      e.preventDefault();
+      await api.post("/login", { username: "Guest User", password: "guest" });
+      const userRes = await api.get("/users");
+      setCurrentUser(userRes.data);
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Could not login with Guest User", error);
+    }
+  }
+
   return (
     <div className={styles.loginContainer}>
       <form onSubmit={handleSubmit} className={styles.loginForm}>
@@ -45,7 +57,9 @@ export default function LoginForm({ onSwitch }) {
           Login
         </button>
       </form>
-      <button className={styles.guestBtn}>Guest User</button>
+      <button className={styles.guestBtn} onClick={handleGuestUser}>
+        Guest User
+      </button>
       <p className={styles.proposition}>
         Don't have an account?{" "}
         <a onClick={onSwitch} className={styles.signUpBtn}>
