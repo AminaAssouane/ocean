@@ -40,3 +40,46 @@
   margin: 0 0 0 0;
   overflow-y: auto;
 }
+
+.bottomNav {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .dashboardLayout {
+    grid-template-areas:
+      "header"
+      "main";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .recommendations {
+    display: none;
+  }
+
+  .main {
+    margin-bottom: 57px;
+  }
+
+  .bottomNav {
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--alt-background);
+    padding: 10px 0;
+    border-radius: 16px 16px 0 0;
+    z-index: 100;
+  }
+
+  .logoutBtn {
+    color: red;
+  }
+}

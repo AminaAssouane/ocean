@@ -1,10 +1,23 @@
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Header from "../../components/Header/Header";
 import Recommendations from "../../components/Recommendations/Recommendations";
+import api from "../../services/api";
 import styles from "./DashboardLayout.module.css";
-import { Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { House, CircleUser, UserSearch, Heart, LogOut } from "lucide-react";
 
 export default function DashboardLayout() {
+  const navigate = useNavigate();
+
+  async function handleClick() {
+    try {
+      await api.post("/logout");
+      navigate("/");
+    } catch (error) {
+      console.error("Failed to logout. ", error);
+    }
+  }
+
   return (
     <div className={styles.dashboardLayout}>
       <div className={styles.header}>
@@ -19,6 +32,21 @@ export default function DashboardLayout() {
       <main className={styles.main}>
         <Outlet />
       </main>
+      <nav className={styles.bottomNav}>
+        <NavLink to="/dashboard" end>
+          <House />
+        </NavLink>
+        <NavLink to="/dashboard/profile">
+          <CircleUser />
+        </NavLink>
+        <NavLink to="/dashboard/users">
+          <UserSearch />
+        </NavLink>
+        <NavLink to="/dashboard/likes">
+          <Heart />
+        </NavLink>
+        <LogOut className={styles.logoutBtn} onClick={handleClick} />
+      </nav>
     </div>
   );
 }

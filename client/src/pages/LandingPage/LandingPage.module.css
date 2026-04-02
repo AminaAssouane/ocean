@@ -96,3 +96,27 @@ footer a:hover {
     background-position: 0% 0%;
   }
 }
+
+@media (max-width: 600px) {
+  .main {
+    justify-content: center;
+  }
+
+  .landingImage {
+    display: none;
+  }
+
+  .authSection {
+    flex: none;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .title {
+    margin-top: 3rem;
+  }
+
+  footer {
+    margin-bottom: 0.5rem;
+  }
+}
