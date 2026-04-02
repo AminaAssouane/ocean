@@ -70,6 +70,10 @@
   gap: 0.8rem;
 }
 
+.username {
+  font-size: 1rem;
+}
+
 .logoutBtn {
   color: red;
 }
