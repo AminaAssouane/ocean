@@ -25,12 +25,17 @@
   --alt-background: #ebf8fc;
   --post-buttons: rgb(109, 109, 109);
   --comment-background: #e1f0f9;
+  --post-shadow: rgba(3, 132, 158, 0.4) 0px 3px 8px;
+  --textarea-shadow:
+    rgba(3, 132, 158, 0.4) 5px 5px, rgba(3, 132, 158, 0.3) 10px 10px,
+    rgba(3, 132, 158, 0.2) 15px 15px, rgba(3, 132, 158, 0.1) 20px 20px,
+    rgba(3, 132, 158, 0.05) 25px 25px;
 }
 
 [data-theme="dark"] {
   --background: black;
   --color: white;
-  --primary: #3995d6;
+  --primary: #115a8f;
   --secondary: gray;
   --footer: rgb(92, 91, 91);
   --input: #3b3b3b;
@@ -40,6 +45,11 @@
   --alt-background: #111828;
   --post-buttons: rgb(109, 109, 109);
   --comment-background: #08273b;
+  --post-shadow: rgba(4, 63, 74, 0.909) 0px 3px 8px;
+  --textarea-shadow:
+    rgba(2, 50, 59, 0.4) 5px 5px, rgba(2, 50, 59, 0.3) 10px 10px,
+    rgba(2, 50, 59, 0.2) 15px 15px, rgba(2, 50, 59, 0.1) 20px 20px,
+    rgba(2, 50, 59, 0.05) 25px 25px;
 }
 
 a {

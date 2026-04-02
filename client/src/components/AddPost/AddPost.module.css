@@ -11,12 +11,7 @@
   font-size: 1.3rem;
   box-sizing: border-box;
   border-radius: 16px;
-  box-shadow:
-    rgba(3, 132, 158, 0.4) 5px 5px,
-    rgba(3, 132, 158, 0.3) 10px 10px,
-    rgba(3, 132, 158, 0.2) 15px 15px,
-    rgba(3, 132, 158, 0.1) 20px 20px,
-    rgba(3, 132, 158, 0.05) 25px 25px;
+  box-shadow: var(--textarea-shadow);
   background-color: var(--background);
 }
 
@@ -35,6 +30,7 @@
   margin-top: 30px;
   background-color: rgba(3, 132, 158, 0.2);
   align-self: flex-end;
+  color: var(--color);
 }
 
 .postBtn:hover {

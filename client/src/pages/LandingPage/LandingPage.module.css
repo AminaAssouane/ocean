@@ -24,6 +24,13 @@
   flex: 1;
 }
 
+.theme {
+  width: 6rem;
+  height: 1.5rem;
+  margin-top: 1rem;
+  margin-left: -35rem;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -52,7 +59,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: fill 2s ease-in-out infinite alternate;
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 
 footer {

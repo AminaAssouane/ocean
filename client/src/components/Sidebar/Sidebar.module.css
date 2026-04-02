@@ -32,6 +32,7 @@
 .sideBarContainer button {
   border: none;
   font-size: 1.2rem;
-  background-color: #ebf8fc;
+  background-color: var(--alt-background);
+  color: var(--color);
   margin-top: auto;
 }

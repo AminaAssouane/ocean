@@ -2,7 +2,7 @@
   margin: 20px;
   padding: 10px 20px;
   border-radius: 16px;
-  box-shadow: rgba(3, 132, 158, 0.4) 0px 3px 8px;
+  box-shadow: var(--post-shadow);
   background-color: rgba(2, 162, 194, 0.1);
 }
 
