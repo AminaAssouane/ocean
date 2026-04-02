@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useUser } from "../../context/UserContext.jsx";
 import api from "../../services/api";
 import styles from "./Recommendations.module.css";
 import { Link } from "react-router-dom";
@@ -8,6 +9,7 @@ export default function Recommendations() {
   const [users, setUsers] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const { currentUser } = useUser();
 
   useEffect(() => {
     async function fetchUsers() {
@@ -26,7 +28,11 @@ export default function Recommendations() {
         {users.map((user) => (
           <div key={user.id} className={styles.user}>
             <Link
-              to={`/dashboard/users/${user.id}`}
+              to={
+                currentUser?.id === user.id
+                  ? `/dashboard/profile`
+                  : `/dashboard/users/${user.id}`
+              }
               className={styles.username}
             >
               <img src={`${user.avatar}`} alt="" className={styles.avatar} />

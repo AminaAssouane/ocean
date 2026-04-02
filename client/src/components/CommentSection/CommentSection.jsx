@@ -73,7 +73,11 @@ export default function CommentSection({ postId }) {
           <div key={comment.id} className={styles.comment}>
             <div className={styles.top}>
               <Link
-                to={`/dashboard/users/${comment.user.id}`}
+                to={
+                  currentUser?.id === comment.user.id
+                    ? `/dashboard/profile`
+                    : `/dashboard/users/${comment.user.id}`
+                }
                 onClick={(e) => e.stopPropagation()}
                 className={styles.commentInfo}
               >

@@ -27,7 +27,11 @@ export default function PostPreview({ post, onDelete }) {
     <article onClick={handleClick} className={styles.postPreviewContainer}>
       <div className={styles.top}>
         <Link
-          to={`/dashboard/users/${authorId}`}
+          to={
+            currentUser?.id === post.authorId
+              ? `/dashboard/profile`
+              : `/dashboard/users/${authorId}`
+          }
           onClick={(e) => e.stopPropagation()}
           className={styles.userInfo}
         >
