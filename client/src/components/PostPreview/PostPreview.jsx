@@ -7,7 +7,7 @@ import CommentButton from "../CommentButton/CommentButton";
 import DeletePostButton from "../DeletePostButton/DeletePostButton";
 import CommentSection from "../CommentSection/CommentSection";
 
-export default function PostPreview({ post }) {
+export default function PostPreview({ post, onDelete }) {
   const navigate = useNavigate();
   const { currentUser } = useUser();
   const [showComments, setShowComments] = useState(false);
@@ -42,7 +42,7 @@ export default function PostPreview({ post }) {
           </div>
         </Link>
         {currentUser?.id === post.authorId && (
-          <DeletePostButton postId={post.id} />
+          <DeletePostButton postId={post.id} onDelete={onDelete} />
         )}
       </div>
       <div className={styles.content}>{post.content}</div>

@@ -77,7 +77,11 @@ export default function UserProfile() {
       </div>
       <div className={styles.postsContainer}>
         {posts.map((post) => (
-          <PostPreview key={post.id} post={post} />
+          <PostPreview
+            key={post.id}
+            post={post}
+            onDelete={(id) => setPosts(posts.filter((p) => p.id !== id))}
+          />
         ))}
       </div>
     </section>

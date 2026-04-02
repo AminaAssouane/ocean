@@ -26,7 +26,11 @@ export default function Feed() {
       <AddPost onPostCreated={getPosts} />
       <section>
         {posts.map((post) => (
-          <PostPreview key={post.id} post={post} />
+          <PostPreview
+            key={post.id}
+            post={post}
+            onDelete={(id) => setPosts(posts.filter((p) => p.id !== id))}
+          />
         ))}
       </section>
     </div>

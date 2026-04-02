@@ -24,7 +24,11 @@ export default function Likes() {
       <h1 className={styles.title}>Liked posts</h1>
       <div>
         {posts.map((post) => (
-          <PostPreview key={post.id} post={post} />
+          <PostPreview
+            key={post.id}
+            post={post}
+            onDelete={(id) => setPosts(posts.filter((p) => p.id !== id))}
+          />
         ))}
       </div>
     </section>
