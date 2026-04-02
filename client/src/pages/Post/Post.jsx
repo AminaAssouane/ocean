@@ -5,7 +5,7 @@ import LikeButton from "../../components/LikeButton/LikeButton";
 import CommentButton from "../../components/CommentButton/CommentButton";
 import CommentSection from "../../components/CommentSection/CommentSection";
 import styles from "./Post.module.css";
-import { RingLoader } from "react-spinners";
+import { ClipLoader } from "react-spinners";
 
 export default function Post() {
   const { postId } = useParams();
@@ -25,8 +25,8 @@ export default function Post() {
 
   if (!post)
     return (
-      <div className={styles.spinner}>
-        <RingLoader color="#0f488e" />;
+      <div className="spinner">
+        <ClipLoader color="#0f488e" />
       </div>
     );
 

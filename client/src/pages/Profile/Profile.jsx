@@ -3,7 +3,7 @@ import PostPreview from "../../components/PostPreview/PostPreview";
 import api from "../../services/api";
 import styles from "./Profile.module.css";
 import { CalendarDays, SquarePen } from "lucide-react";
-import { RingLoader } from "react-spinners";
+import { ClipLoader } from "react-spinners";
 
 export default function Profile() {
   const [user, setUser] = useState(null);
@@ -75,8 +75,8 @@ export default function Profile() {
 
   if (!user || following === null || followers === null || posts === null)
     return (
-      <div className={styles.spinner}>
-        <RingLoader color="#0f488e" />;
+      <div className="spinner">
+        <ClipLoader color="#0f488e" />
       </div>
     );
 
