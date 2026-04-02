@@ -35,6 +35,7 @@ async function createComment(req, res) {
     const userId = parseInt(req.user.id);
     const comment = await prisma.comment.create({
       data: { content, postId, userId },
+      include: { user: { select: { username: true, avatar: true, id: true } } },
     });
     res.json(comment);
   } catch (error) {
@@ -55,8 +56,8 @@ async function deleteComment(req, res) {
       return res.status(403).json({ message: "Not authorized" });
     }
 
-    comment = await prisma.comment.delete({ where: { id } });
-    res.json(comment);
+    const deletedComment = await prisma.comment.delete({ where: { id } });
+    res.json(deletedComment);
   } catch (error) {
     console.error("Failed deleting comment. ", error);
     res.status(500).json({ message: "Failed deleting comment." });
