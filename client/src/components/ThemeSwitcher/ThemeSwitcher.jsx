@@ -5,13 +5,7 @@ import { useState, useEffect } from "react";
 export default function ThemeSwitcher({ className }) {
   const [theme, setTheme] = useState(() => {
     const savedTheme = localStorage.getItem("theme");
-
-    if (savedTheme) return savedTheme;
-
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)",
-    ).matches;
-    return prefersDark ? "dark" : "light";
+    return savedTheme || "light";
   });
 
   // Apply theme + persist
