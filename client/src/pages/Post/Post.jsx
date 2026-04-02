@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import api from "../../services/api";
 import LikeButton from "../../components/LikeButton/LikeButton";
 import CommentButton from "../../components/CommentButton/CommentButton";
+import CommentSection from "../../components/CommentSection/CommentSection";
 import styles from "./Post.module.css";
 
 export default function Post() {
@@ -25,7 +26,7 @@ export default function Post() {
   return (
     <article className={styles.postContainer}>
       <Link
-        to={`users/${post.authorId}`}
+        to={`/dashboard/users/${post.authorId}`}
         onClick={(e) => e.stopPropagation()}
         className={styles.userInfo}
       >
@@ -39,9 +40,16 @@ export default function Post() {
           })}
         </div>
       </Link>
-      <p>{post.content}</p>
-      <LikeButton postId={postId} />
-      <CommentButton postId={postId} />
+      <p className={styles.content}>{post.content}</p>
+      {post.image && (
+        <img src={post.image} alt="" className={styles.postImage} />
+      )}
+      <div className={styles.buttons}>
+        <LikeButton postId={postId} className={styles.likeBtn} />
+        <CommentButton postId={postId} className={styles.commentBtn} />
+      </div>
+
+      <CommentSection postId={postId} />
     </article>
   );
 }

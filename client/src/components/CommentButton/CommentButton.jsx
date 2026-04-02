@@ -7,11 +7,6 @@ import styles from "./CommentButton.module.css";
 export default function CommentButton({ postId, onClick }) {
   const [nbComments, setNbComments] = useState(0);
 
-  function toggleCommentSection(e) {
-    e.stopPropagation();
-    setShow(!show);
-  }
-
   useEffect(() => {
     async function getNbComments() {
       try {

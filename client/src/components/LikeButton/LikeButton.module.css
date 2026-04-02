@@ -8,6 +8,7 @@
 
 .likeSection:hover {
   color: red;
+  cursor: pointer;
 }
 
 .heart {

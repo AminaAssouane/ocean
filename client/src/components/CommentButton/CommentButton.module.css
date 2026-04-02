@@ -8,6 +8,7 @@
 
 .nbComments:hover {
   color: var(--primary);
+  cursor: pointer;
 }
 
 .comment {

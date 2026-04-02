@@ -29,7 +29,7 @@
   border: none;
   background-color: rgba(3, 132, 158, 0.2);
   margin-left: 2rem;
-  color: white;
+  color: var(--color);
 }
 
 .postBtn:hover {

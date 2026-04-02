@@ -23,22 +23,12 @@ export default function CommentSection({ postId }) {
     fetchComments();
   }, []);
 
-  // async function handlePost(e) {
-  //   e.stopPropagation();
-  //   try {
-  //     await api.post(`/comments/${postId}`, { content });
-  //     setContent("");
-  //   } catch (error) {
-  //     console.error("Failed creating comment. ", error);
-  //   }
-  // }
-
   async function handlePost(e) {
     e.stopPropagation();
     if (!content.trim()) return;
 
     const optimisticComment = {
-      id: Date.now(), // temporary id
+      id: Date.now(),
       content,
       createdAt: new Date().toISOString(),
       user: {
@@ -53,12 +43,10 @@ export default function CommentSection({ postId }) {
 
     try {
       const res = await api.post(`/comments/${postId}`, { content });
-      // replace the optimistic comment with the real one from server
       setComments((prev) =>
         prev.map((c) => (c.id === optimisticComment.id ? res.data : c)),
       );
     } catch (error) {
-      // rollback on failure
       setComments((prev) => prev.filter((c) => c.id !== optimisticComment.id));
       console.error("Failed creating comment. ", error);
     }
@@ -85,7 +73,7 @@ export default function CommentSection({ postId }) {
           <div key={comment.id} className={styles.comment}>
             <div className={styles.top}>
               <Link
-                to={`users/${comment.user.id}`}
+                to={`/dashboard/users/${comment.user.id}`}
                 onClick={(e) => e.stopPropagation()}
                 className={styles.commentInfo}
               >
