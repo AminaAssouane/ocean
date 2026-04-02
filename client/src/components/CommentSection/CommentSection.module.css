@@ -95,3 +95,9 @@
   justify-content: space-between;
   align-items: center;
 }
+
+@media (max-width: 600px) {
+  .textarea {
+    width: 69%;
+  }
+}

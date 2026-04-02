@@ -41,3 +41,23 @@
   margin-left: 6px;
   font-size: 1.4rem;
 }
+
+.postImage {
+  max-width: 45rem;
+  max-height: 45rem;
+  border-radius: 16px;
+  margin: 10px 0;
+  object-fit: cover;
+}
+
+@media (max-width: 600px) {
+  .postContainer {
+    width: auto;
+    overflow: hidden;
+  }
+
+  .postImage {
+    width: 100%;
+    height: auto;
+  }
+}
