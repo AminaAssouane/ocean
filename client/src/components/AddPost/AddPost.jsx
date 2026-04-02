@@ -51,8 +51,20 @@ export default function AddPost({ onPostCreated = null }) {
           className={`${styles.textarea}
             ${onPostCreated ? styles.smallTextArea : styles.bigTextArea}`}
         />
+
         {preview && (
-          <img src={preview} alt="preview" className={styles.preview} />
+          <div className={styles.previewWrapper}>
+            <img src={preview} alt="preview" className={styles.preview} />
+            <button
+              className={styles.removeImageBtn}
+              onClick={() => {
+                setImage(null);
+                setPreview(null);
+              }}
+            >
+              ✕
+            </button>
+          </div>
         )}
         <div ref={pickerRef}>
           <button

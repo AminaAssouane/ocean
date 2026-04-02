@@ -4,15 +4,21 @@
   margin: 20px 30px 40px 20px;
 }
 
+.textareaWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  box-shadow: var(--textarea-shadow);
+  background-color: var(--background);
+}
+
 .textarea {
   all: unset;
   padding: 20px;
   width: 100%;
   font-size: 1.3rem;
   box-sizing: border-box;
-  border-radius: 16px;
-  box-shadow: var(--textarea-shadow);
-  background-color: var(--background);
 }
 
 .smallTextArea {
@@ -21,6 +27,13 @@
 
 .bigTextArea {
   height: 14rem;
+}
+
+.previewWrapper {
+  position: relative;
+  padding: 0 20px 10px 20px;
+  width: fit-content;
+  margin-bottom: 2rem;
 }
 
 .postBtn {
@@ -74,9 +87,24 @@
 /* Images */
 
 .preview {
-  width: 20rem;
-  height: 20rem;
-  border-radius: 16px;
+  max-height: 20rem;
+  max-width: 20rem;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.removeImageBtn {
+  position: absolute;
+  top: 4px;
+  right: 24px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-size: 12px;
 }
 
 .imageBtn {
