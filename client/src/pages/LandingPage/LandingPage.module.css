@@ -4,6 +4,7 @@
 
   background-color: var(--background);
   color: var(--color);
+  overflow: hidden
 }
 
 .imageSection {
@@ -64,7 +65,7 @@ footer {
 
 footer a:hover {
   color: var(--color);
-  font-weight: 600;
+  transform: scale(1.1);
 }
 
 .credit {
@@ -92,6 +93,7 @@ footer a:hover {
   0% {
     background-position: 0% 100%;
   }
+
   100% {
     background-position: 0% 0%;
   }
