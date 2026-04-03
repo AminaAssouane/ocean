@@ -6,6 +6,7 @@ import RegisterForm from "../../components/RegisterForm/RegisterForm";
 
 export default function LandingPage() {
   const [view, setView] = useState("login");
+  const currentYear = new Date().getFullYear()
 
   return (
     <main className={styles.main}>
@@ -22,14 +23,20 @@ export default function LandingPage() {
           )}
         </div>
         <footer>
-          <div className={styles.credit}>© Made by Amina Assouane</div>
+          <div className={styles.credit}>
+            © <time dateTime={String(currentYear)}>{currentYear}</time> Made by Amina Assouane
+          </div>
           <div className={styles.links}>
-            <a href="https://github.com/AminaAssouane" target="_blank">
+            <a href="https://github.com/AminaAssouane"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Github
             </a>
             <a
               href="https://www.linkedin.com/in/amina-assouane/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               LinkedIn
             </a>
@@ -37,7 +44,7 @@ export default function LandingPage() {
         </footer>
       </section>
       <section className={styles.imageSection}>
-        <img src={landingPic} alt="" className={styles.landingImage} />
+        <img src={landingPic} alt="Ocean wave illustration" className={styles.landingImage} />
       </section>
     </main>
   );
