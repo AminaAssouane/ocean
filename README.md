@@ -1,6 +1,6 @@
-# OCEAN 🌊
+# Ocean 🌊
 
-**OCEAN** is a full-stack social networking application designed to let users connect, share content, and interact with one another through a personalized social experience.
+**Ocean** is a full-stack social networking application designed to let users connect, share content, and interact with one another through a personalized social experience.
 
 Users can create posts, engage with other people's content, follow other users, and customize their profiles. OCEAN brings together essential social networking features in a responsive application with authentication and a personalized dashboard.
 
@@ -50,7 +50,7 @@ Users can create posts, engage with other people's content, follow other users, 
 
 ## 🗄️ Database Architecture
 
-OCEAN uses PostgreSQL with Prisma ORM to manage its relational data model.
+Ocean uses PostgreSQL with Prisma ORM to manage its relational data model.
 
 Prisma provides database access and query management, supporting the application's user accounts, social connections, posts, and interactions.
 
@@ -153,10 +153,14 @@ Database schema and migration files are located in `server/prisma`.
 
 ## 💡 Motivation
 
-OCEAN was built as a full-stack portfolio project to deepen my experience with modern web development, relational database design, authentication, session management, and cloud-based image storage.
+Ocean was built as a full-stack portfolio project to deepen my experience with modern web development, relational database design, authentication, session management, and cloud-based image storage.
 
-Building OCEAN allowed me to explore the development of a complete social networking application, bringing together frontend and backend development, database management, and deployment.
+Building Ocean allowed me to explore the development of a complete social networking application, bringing together frontend and backend development, database management, and deployment.
 
 ---
 
-**Built by [Amina Assouane](https://github.com/AminaAssouane)**
+## 👩🏻‍💻 Built By
+
+**Amina Assouane**
+
+[GitHub](https://github.com/AminaAssouane) · [Portfolio](https://amina-assouane.vercel.app)
