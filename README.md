@@ -16,9 +16,9 @@ Users can create posts, engage with other people's content, follow other users, 
 | --------------------------------------- | ---------------------------------------- |
 | ![Home Feed](screenshots/home-feed.png) | ![User Profile](screenshots/profile.png) |
 
-| Post Interactions                                       | Dashboard                               |
-| ------------------------------------------------------- | --------------------------------------- |
-| ![Post Interactions](screenshots/post-interactions.png) | ![Dashboard](screenshots/dashboard.png) |
+| Post Interactions                                       | Create a Post                                 |
+| ------------------------------------------------------- | --------------------------------------------- |
+| ![Post Interactions](screenshots/post-interactions.png) | ![Create a Post](screenshots/create-post.png) |
 
 ## ✨ Features
 
