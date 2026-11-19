@@ -9,22 +9,29 @@ export default function RegisterForm({ onSwitch }) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
+
     if (password !== confirmPassword) {
       setError("Passwords must match");
       return;
     }
+
     try {
       setError("");
+      setIsLoading(true);
+
       await api.post("/register", { username, email, password });
       navigate("/dashboard");
     } catch (error) {
       console.error(error);
       setError(error.response?.data?.message || "Registration failed");
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -38,7 +45,9 @@ export default function RegisterForm({ onSwitch }) {
           required
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          disabled={isLoading}
         />
+
         <input
           type="email"
           id="email"
@@ -46,7 +55,9 @@ export default function RegisterForm({ onSwitch }) {
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          disabled={isLoading}
         />
+
         <input
           type="password"
           id="password"
@@ -54,7 +65,9 @@ export default function RegisterForm({ onSwitch }) {
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          disabled={isLoading}
         />
+
         <input
           type="password"
           id="confirmPassword"
@@ -62,17 +75,21 @@ export default function RegisterForm({ onSwitch }) {
           required
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
+          disabled={isLoading}
         />
-        <button type="submit" className={styles.signUpBtn}>
-          Sign Up
+
+        <button type="submit" className={styles.signUpBtn} disabled={isLoading}>
+          {isLoading ? "Loading..." : "Sign Up"}
         </button>
       </form>
+
       <div className={styles.proposition}>
         Already have an account?{" "}
         <a onClick={onSwitch} className={styles.loginBtn}>
           Login
         </a>
       </div>
+
       <div className={styles.error}>{error}</div>
     </>
   );
