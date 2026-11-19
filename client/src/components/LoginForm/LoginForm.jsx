@@ -7,32 +7,48 @@ import styles from "./LoginForm.module.css";
 export default function LoginForm({ onSwitch }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loadingAction, setLoadingAction] = useState("");
+
   const { setCurrentUser } = useUser();
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
+    e.preventDefault();
+    setLoadingAction("login");
+
     try {
-      e.preventDefault();
       await api.post("/login", { username, password });
       const userRes = await api.get("/users");
       setCurrentUser(userRes.data);
       navigate("/dashboard");
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoadingAction("");
     }
   }
 
   async function handleGuestUser(e) {
+    e.preventDefault();
+    setLoadingAction("guest");
+
     try {
-      e.preventDefault();
-      await api.post("/login", { username: "Guest User", password: "guest" });
+      await api.post("/login", {
+        username: "Guest User",
+        password: "guest",
+      });
+
       const userRes = await api.get("/users");
       setCurrentUser(userRes.data);
       navigate("/dashboard");
     } catch (error) {
       console.error("Could not login with Guest User", error);
+    } finally {
+      setLoadingAction("");
     }
   }
+
+  const isLoading = loadingAction !== "";
 
   return (
     <div className={styles.loginContainer}>
@@ -44,7 +60,9 @@ export default function LoginForm({ onSwitch }) {
           required
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          disabled={isLoading}
         />
+
         <input
           type="password"
           id="password"
@@ -52,14 +70,23 @@ export default function LoginForm({ onSwitch }) {
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          disabled={isLoading}
         />
-        <button type="submit" className={styles.loginBtn}>
-          Login
+
+        <button type="submit" className={styles.loginBtn} disabled={isLoading}>
+          {loadingAction === "login" ? "Loading..." : "Login"}
         </button>
       </form>
-      <button className={styles.guestBtn} onClick={handleGuestUser}>
-        Guest User
+
+      <button
+        type="button"
+        className={styles.guestBtn}
+        onClick={handleGuestUser}
+        disabled={isLoading}
+      >
+        {loadingAction === "guest" ? "Loading..." : "Guest User"}
       </button>
+
       <p className={styles.proposition}>
         Don't have an account?{" "}
         <a onClick={onSwitch} className={styles.signUpBtn}>
